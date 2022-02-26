@@ -1,0 +1,11 @@
+<svg id="icon-pantry-round_1" data-name="icon-pantry-round 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="layer2">
+    <path id="path1652" d="M3.788,0C1.3.033-.171,3.441.016,5.816.175,7.831,1.8,9.99,3.788,10c2.06.011,3.783-2.091,3.956-4.286S6.275-.032,3.788,0Z" transform="translate(3.212 11)" fill="none" stroke="#969696" stroke-width="1.907"/>
+    <path id="path1654" d="M0,3,1,2,3,0H9l3,3V17H4" transform="translate(8 4)" fill="none" stroke="#969696" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="path1662" d="M9.5,0,7.769,3H0" transform="translate(8 5)" fill="none" stroke="#969696" stroke-linecap="round" stroke-width="2.148"/>
+    <path id="path1664" d="M0,0V13" transform="translate(16 8)" fill="none" stroke="#969696" stroke-width="2"/>
+    <path id="path1668" d="M0,0H8" transform="translate(10 3)" fill="none" stroke="#969696" stroke-width="2.449"/>
+    <path id="path1670" d="M0,0V1" transform="translate(8 7)" fill="none" stroke="#969696" stroke-width="2"/>
+    <path id="path1675" d="M0,0V1" transform="translate(8 7)" fill="none" stroke="#969696" stroke-width="1"/>
+  </g>
+</svg>

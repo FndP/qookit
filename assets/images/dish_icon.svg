@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="42.625" height="31.56" viewBox="0 0 42.625 31.56">
+  <g id="icon-dish_1" data-name="icon-dish 1" transform="translate(8 0)">
+    <path id="path833" d="M0,0H26V26H0Z" fill="none"/>
+    <g id="layer2">
+      <path id="path886" d="M0,0H18.96C17.546,8.251.784,8.461,0,0Z" transform="translate(3.472 17.333)" fill="none" stroke="#757575" stroke-width="1.972"/>
+      <g id="g902">
+        <path id="path888" d="M0,0H26V26H0Z" transform="translate(-16.625 -5.56)" fill="none"/>
+        <path id="path890" d="M11.267,6.067V4.55h6.067V3.033H11.267V1.517h6.067V0H11.267A3.271,3.271,0,0,0,7.8,3.033H0V4.55H7.8a3.271,3.271,0,0,0,3.467,3.033h6.067V6.067Z" transform="translate(4.333 1.95)" fill="#757575"/>
+      </g>
+      <path id="path904" d="M0,4.085H17.2S15.052,0,8.6,0,0,4.085,0,4.085Z" transform="translate(4.399 11.054)" fill="#757575" stroke="#757575" stroke-width="0.865"/>
+    </g>
+  </g>
+</svg>

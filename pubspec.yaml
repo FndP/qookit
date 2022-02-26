@@ -1,0 +1,116 @@
+name: qookit
+description: Meal planning in 60 seconds
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+11
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  auto_route: ^3.2.1
+  cached_network_image: ^3.2.0
+  camera: ^0.9.4+5
+  carousel_slider: ^2.3.1
+  dotted_border: ^2.0.0+2
+  double_back_to_close_app: 0.1.2
+  email_validator: 0.1.4
+  firebase_analytics: ^9.0.5
+  firebase_auth: ^3.3.5
+  firebase_auth_web: ^3.3.6
+  firebase_core: ^1.11.0
+  firebase_dynamic_links: ^4.0.4
+  #firebase_ml_custom: ^0.1.0
+  flutter_facebook_auth: ^1.0.2
+  flutter_slidable: ^0.5.7 
+  flutter_svg: ^1.0.1
+  flutter_toggle_tab: ^0.0.3+2
+  font_awesome_flutter: ^8.10.0
+  get_it: ^7.1.3
+  google_fonts: ^2.2.0
+  google_sign_in: ^5.2.3
+  http: ^0.13.4
+  hive: ^2.0.5
+  hive_flutter: ^1.1.0
+  image: ^3.1.1
+  image_crop: ^0.3.4
+  image_picker: ^0.8.4+4
+  injectable: ^1.0.5
+  intl: ^0.17.0
+  intro_slider: ^2.3.3
+  json_annotation: ^4.4.0
+  path_provider: ^2.0.8
+  pedantic: ^1.9.2
+  pinput: ^0.2.6
+  platform: ^3.1.0
+  rich_alert: ^0.1.32
+  shimmer: ^1.1.2
+  stacked: ^2.2.7+1
+  stacked_themes: ^0.3.8+1
+  tflite_flutter: ^0.9.0
+  tflite_flutter_helper: ^0.3.1
+  url_launcher: ^6.0.18
+  video_player: ^1.0.1
+  ffi: ^1.1.2
+  observable_ish: ^3.0.1
+  flutter_lwa: ^2.0.0
+  sign_in_with_apple: ^3.3.0
+
+      #flutter_tflite:
+      #git:
+    #url: https://github.com/qookit/flutter_tflite.git
+    #ref: dev
+
+dev_dependencies:
+  build_runner: ^2.1.7
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.9.2
+  hive_generator: ^1.1.2
+  injectable_generator: ^1.0.6
+  json_serializable: ^6.1.4
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# flutter pub run flutter_launcher_icons:main
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_logo.jpg"
+  adaptive_icon_background: "#ffd53f"
+  adaptive_icon_foreground: "assets/images/pan.png"
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+  assets:
+    - assets/cfg/
+    - assets/images/
+    - assets/kite.jpg
+    - assets/groceries.names
+    - assets/groceries-yolov4-tiny-416-01-09-21.tflite
+
+  fonts:
+    - family: kabel
+      fonts:
+        - asset: assets/fonts/itckabelstd-demi.ttf
+
+    - family: georgia
+      fonts:
+        - asset: assets/fonts/GeorgiaRegularfont.ttf
+
+    - family: georgia_bold
+      fonts:
+        - asset: assets/fonts/georgiabold.ttf
+
+    - family: opensans
+      fonts:
+        - asset: assets/fonts/OpenSansRegular.ttf

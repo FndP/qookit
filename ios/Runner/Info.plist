@@ -1,0 +1,70 @@
+CFBundleURLTypes<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>qookit</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Can I use the camera please?</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Can I use the mic please?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Qookit would like access to your photo library</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>APIKey</key>
+    	<string>eyJhbGciOiJSU0EtU0hBMjU2IiwidmVyIjoiMSJ9.eyJ2ZXIiOiIzIiwiZW5kcG9pbnRzIjp7ImF1dGh6IjoiaHR0cHM6Ly93d3cuYW1hem9uLmNvbS9hcC9vYSIsInRva2VuRXhjaGFuZ2UiOiJodHRwczovL2FwaS5hbWF6b24uY29tL2F1dGgvbzIvdG9rZW4ifSwiY2xpZW50SWQiOiJhbXpuMS5hcHBsaWNhdGlvbi1vYTItY2xpZW50LjI2NWNlODAyOWE2OTRlMTRiOTBmZTM4NDBmZmM2MmNjIiwiYXBwRmFtaWx5SWQiOiJhbXpuMS5hcHBsaWNhdGlvbi5jOTE0YWU5ZWQ2YjQ0NjU1YTE0MmJkOTBhNDc0OGI3MSIsImJ1bmRsZVNlZWRJZCI6ImNvbS5xb29raXQucW9va2l0IiwiYnVuZGxlSWQiOiJjb20ucW9va2l0LnFvb2tpdCIsImlzcyI6IkFtYXpvbiIsInR5cGUiOiJBUElLZXkiLCJhcHBWYXJpYW50SWQiOiJhbXpuMS5hcHBsaWNhdGlvbi1jbGllbnQuYzk1ODQ3MmE2MjMwNGU3ZGI2OTQyMmEyNGMyM2IxMzgiLCJ0cnVzdFBvb2wiOm51bGwsImFwcElkIjoiYW16bjEuYXBwbGljYXRpb24tY2xpZW50LmM5NTg0NzJhNjIzMDRlN2RiNjk0MjJhMjRjMjNiMTM4IiwiaWQiOiI3YWQyNDMxNi00NDdhLTQwMmMtYWYxZi1mNzYzYjcwNGI3MmIiLCJpYXQiOiIxNjQzMzQ3OTY2MjU3In0=.UMciCqs6qTJ0b+DZarpryihb1Txa+/w410UId7rZIz1Hl3HxVTfLiLnmpwUfpVSnxovWd4WKZ0lkFNunXlysbDGz5MZVYqPUe7Jsk2XmqtDnMbrNyDB2PqGfc7ggBXw2vu1jfXj0VmrkUufnoXxuSLcqcIGYHCNdCmd4FlUlbD8vmC0yLL9NpQ3rmUiVR6aQ4K+kAA7Zgga1R0t5HvrqN32cIIJOfelTZCD+f4Wketp69QEkwZsUzwE9IlU7eHiAqi+cKXmSqjLppGj8RuDAWTprYV3WdUJSL8INkS2InsOV+HLcoKS8W/v+Y27qzH6xL8K50a/f/T/zlywDf5sEpQ==</string>
+
+    <key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.qookit.qookit</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>amzn-com.qookit.qookit</string>
+				<string>fb492663188871092</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+    <string>492663188871092</string>
+    <key>FacebookDisplayName</key>
+    <string>Qookit</string>
+</dict>
+</plist>

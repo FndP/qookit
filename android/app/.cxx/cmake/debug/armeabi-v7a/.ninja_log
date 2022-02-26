@@ -1,0 +1,9 @@
+# ninja log v5
+0	370	664969795	CMakeFiles/convertImage.dir/D_/qookitToParth/qookit/ios/Classes/converter.c.o	f909ffd3bfa907a5
+370	457	664969795	D:/qookitToParth/qookit/build/app/intermediates/cmake/debug/obj/armeabi-v7a/libconvertImage.so	e79a868c2a37c483
+16	806	665053941	D:/qookitToParth/qookit/build/app/intermediates/cmake/debug/obj/armeabi-v7a/libconvertImage.so	e79a868c2a37c483
+12	945	665066916	D:/qookitToParth/qookit/build/app/intermediates/cmake/debug/obj/armeabi-v7a/libconvertImage.so	e79a868c2a37c483
+18	1089	665143621	D:/qookitToParth/qookit/build/app/intermediates/cmake/debug/obj/armeabi-v7a/libconvertImage.so	e79a868c2a37c483
+12	485	665478430	D:/qookitToParth/qookit/build/app/intermediates/cmake/debug/obj/armeabi-v7a/libconvertImage.so	e79a868c2a37c483
+14	1005	666623307	D:/qookitToParth/qookit/build/app/intermediates/cmake/debug/obj/armeabi-v7a/libconvertImage.so	e79a868c2a37c483
+14	400	666705565	D:/qookitToParth/qookit/build/app/intermediates/cmake/debug/obj/armeabi-v7a/libconvertImage.so	e79a868c2a37c483

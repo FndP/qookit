@@ -1,0 +1,3 @@
+C:/Users/ADMIN/Desktop/qookit/android/app/.cxx/cmake/release/x86_64/CMakeFiles/rebuild_cache.dir
+C:/Users/ADMIN/Desktop/qookit/android/app/.cxx/cmake/release/x86_64/CMakeFiles/convertImage.dir
+C:/Users/ADMIN/Desktop/qookit/android/app/.cxx/cmake/release/x86_64/CMakeFiles/edit_cache.dir

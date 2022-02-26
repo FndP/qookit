@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qookit</string>
+    <string name="facebook_app_id">492663188871092</string>
+    <string name="fb_login_protocol_scheme">fb492663188871092</string>
+</resources>

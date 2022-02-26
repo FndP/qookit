@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g id="person_outline_24px" transform="translate(-4 -4)">
+    <path id="icon_social_person_outline_24px" data-name="icon/social/person_outline_24px" d="M20,20H4V17c0-.82.52-2,3-3a14.848,14.848,0,0,1,5-1,14.848,14.848,0,0,1,5,1c2.478.993,3,2.178,3,3v3Zm-8-5.1c-2.974,0-6.1,1.457-6.1,2.1v1.1H18.1V17C18.1,16.357,14.974,14.9,12,14.9ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Zm0-6.1A2.1,2.1,0,1,0,14.1,8,2.1,2.1,0,0,0,12,5.9Z" fill="#969696"/>
+  </g>
+</svg>

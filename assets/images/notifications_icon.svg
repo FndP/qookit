@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="19.5" viewBox="0 0 16 19.5">
+  <g id="notifications_none_24px" transform="translate(-4 -2.25)">
+    <path id="icon_social_notifications_none_24px" data-name="icon/social/notifications_none_24px" d="M12,21.75a2,2,0,0,1-2-2h4A2,2,0,0,1,12,21.75Zm8-3H4v-1l2-2v-5A7.087,7.087,0,0,1,7.178,6.69,5.529,5.529,0,0,1,10.5,4.43V3.75a1.5,1.5,0,1,1,3,0V4.43a5.521,5.521,0,0,1,3.326,2.264A7.094,7.094,0,0,1,18,10.75v5l2,2v1ZM12,6.25A3.716,3.716,0,0,0,9.066,7.57,4.908,4.908,0,0,0,8,10.75v6h8v-6a4.907,4.907,0,0,0-1.066-3.18A3.717,3.717,0,0,0,12,6.25Z" fill="#333"/>
+  </g>
+</svg>

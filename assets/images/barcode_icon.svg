@@ -1,0 +1,13 @@
+<svg id="icon-barcode_1" data-name="icon-barcode 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="layer1">
+    <path id="path1013" d="M0,4.375V0H4.25" transform="translate(3 5)" fill="none" stroke="#333" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="path1015" d="M0,0V4.375H4.25" transform="translate(3 14.625)" fill="none" stroke="#333" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="path1017" d="M0,0H4.25V4.375" transform="translate(16.75 5)" fill="none" stroke="#333" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="path1019" d="M0,4.375H4.25V0" transform="translate(16.75 14.625)" fill="none" stroke="#333" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="path1063" d="M0,0V9" transform="translate(6 7)" fill="none" stroke="#333" stroke-width="2"/>
+    <path id="path1065" d="M0,0V7" transform="translate(9 7)" fill="none" stroke="#333" stroke-width="2"/>
+    <path id="path1067" d="M0,0V9" transform="translate(12 7)" fill="none" stroke="#333" stroke-width="2"/>
+    <path id="path1069" d="M0,0V7" transform="translate(15 7)" fill="none" stroke="#333" stroke-width="2"/>
+    <path id="path1071" d="M0,0V9" transform="translate(18 7)" fill="none" stroke="#333" stroke-width="2"/>
+  </g>
+</svg>
