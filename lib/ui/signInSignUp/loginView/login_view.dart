@@ -208,9 +208,7 @@ class LoginView extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(
-                                height: 30,
-                              ),
+                              SizedBox(height: 30),
                               NoAccountRow()
                             ],
                           ),
