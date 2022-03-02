@@ -4,7 +4,7 @@ import 'package:qookit/services/user/user_service.dart';
 import 'package:stacked/stacked.dart';
 
 class RecommendationPreferencesViewModel extends BaseViewModel{
-  String title = 'Hi, Karen!';
+  String title = 'Hi, ${  hiveService.userBox.get(UserService.displayName)}!';
   String subtitle = "Let's focus our recommendations on the things that matter most to you. You can always change this in your profile.";
   String nextRoute = Routes.dietPreferencesView;
   String background = 'assets/images/get_started11.png';

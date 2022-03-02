@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_lwa/lwa.dart';
 import 'package:qookit/app/app_router.gr.dart';
+import 'package:qookit/bloc/user_bloc.dart';
 import 'package:qookit/services/auth/auth_service.dart';
 import 'package:qookit/services/services.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
@@ -95,7 +96,9 @@ class LoginViewModel extends BaseViewModel {
   Future<void> loginWithEmail(BuildContext context) async {
     String message = await authService.signInWithEmail(context, email, password);
     if (message == 'Success') {
-      await ExtendedNavigator.named('topNav').pushAndRemoveUntil(Routes.splashScreenView, (route) => false);
+      await UserBloc().getUserData().then((value){
+        ExtendedNavigator.named('topNav').pushAndRemoveUntil(Routes.splashScreenView, (route) => false);} );
+
     } else {
       Scaffold.of(context).showSnackBar(
           SnackBar(content: Text(message, textAlign: TextAlign.center),

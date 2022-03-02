@@ -192,9 +192,7 @@ class LoginView extends StatelessWidget {
                                     height: 40,
                                   ),
                                   ForgotPasswordButton(),
-                                  SizedBox(
-                                    height: 30,
-                                  ),
+                                  SizedBox(height: 30),
                                   Builder(
                                     builder: (context) => BlockButtonWidget(
                                       text: 'LOG IN',

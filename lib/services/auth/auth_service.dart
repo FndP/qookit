@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +63,7 @@ class AuthService extends ChangeNotifier {
   Future<String> signInWithEmail(BuildContext context, String email, String password) async {
     String message;
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password).then((value) => updateUserDataToBackend(value));
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password)/*.then((value) => updateUserDataToBackend(value))*/;
       // Successfully signed in
 
       return 'Success';

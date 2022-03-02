@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:qookit/models/createuser_request_model.dart';
+import 'package:qookit/models/userdata.dart';
 import 'package:qookit/services/elastic/endpoints/ingredients_service.dart';
 import 'package:qookit/services/elastic/endpoints/recipes_service.dart';
 import 'package:qookit/services/elastic/endpoints/users_service.dart';
@@ -34,15 +35,12 @@ class ElasticService {
 
   // GENERIC REQUESTS **************************************************************************
   // GET ALL ITEMS
-  Future<void> getList(
-      String endpoint, Map<String, String> queryParameters) async {
+  Future<UserDataModel> getList(String endpoint) async {
     var responseJson;
-
-    var uri = Uri.https(elasticService.domain, endpoint, queryParameters);
+    var uri = Uri.https(elasticService.domain, endpoint);
     var token = await authService.token;
 
-    var recipeResponse = await http.get(
-      uri,
+    var recipeResponse = await http.get(uri,
       headers: {
         //HttpHeaders.authorizationHeader
         HttpHeaders.authorizationHeader: 'Bearer $token',
