@@ -71,7 +71,7 @@ ThemeData qookitLight = ThemeData(
 );
 
 TextStyle headerStyle = TextStyle(
-  fontFamily: 'georgia_bold',
+  fontFamily: 'georgi0a_bold',
   fontSize: 32,
   color: Colors.black
 );

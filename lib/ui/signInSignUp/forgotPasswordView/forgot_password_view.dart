@@ -5,7 +5,7 @@ import 'package:stacked/stacked.dart';
 import 'forgot_password_components.dart';
 
 class ForgotPasswordView extends StatelessWidget {
-  static const String id = "forgot_password_screen";
+  static const String id = 'forgot_password_screen';
 
   static GlobalKey<FormState> _forgotpasswordFormKey = GlobalKey<FormState>();
 
@@ -36,8 +36,7 @@ class ForgotPasswordView extends StatelessWidget {
                         margin: EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: Colors.white.withAlpha(230),
-                          borderRadius: BorderRadius.all(Radius.circular(
-                                  10.0) //                 <--- border radius here
+                          borderRadius: BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
                               ),
                         ),
                         child: Column(
@@ -67,7 +66,7 @@ class ForgotPasswordView extends StatelessWidget {
                                   },
                                 ),
                                 Text(
-                                  "Forgot\nPassword",
+                                  'Forgot\nPassword',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.black,
@@ -105,7 +104,7 @@ class ForgotPasswordView extends StatelessWidget {
                                           vertical: 0.0, horizontal: 10.0),
                                       hintText: 'Enter Email ID',
                                       labelText: 'Email ID',
-                                      counterText: "",
+                                      counterText: '',
                                       labelStyle:  TextStyle(
                                           fontFamily: 'opensans', fontSize: 14),
                                       hintStyle:  TextStyle(

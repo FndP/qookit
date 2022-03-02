@@ -228,9 +228,9 @@ class NavigationViewRouter extends RouterBase {
   };
 }
 
-/// ************************************************************************
-/// Arguments holder classes**********
-/// ***************************************************************
+/// **************************************************************
+/// Arguments holder classes
+/// **************************************************************
 
 /// ProfileView arguments holder class
 class ProfileViewArguments {

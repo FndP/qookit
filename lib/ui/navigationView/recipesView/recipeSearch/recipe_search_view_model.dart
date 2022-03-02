@@ -1,5 +1,4 @@
 import 'package:qookit/models/recipe.dart';
-import 'package:qookit/models/recipe_list.dart';
 import 'package:qookit/services/elastic/endpoints/recipes_service.dart';
 import 'package:qookit/services/services.dart';
 import 'package:stacked/stacked.dart';

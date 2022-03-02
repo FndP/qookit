@@ -13,7 +13,7 @@ typedef Convert = Pointer<Uint32> Function(
 
 /// Manages separate Isolate instance for inference
 class IsolateUtils {
-  static const String DEBUG_NAME = "InferenceIsolate";
+  static const String DEBUG_NAME = 'InferenceIsolate';
 
   // ignore: unused_field
   Isolate _isolate;
@@ -35,7 +35,7 @@ class IsolateUtils {
   static void entryPoint(SendPort sendPort) async {
     final port = ReceivePort();
     final DynamicLibrary convertImageLib = Platform.isAndroid
-        ? DynamicLibrary.open("libconvertImage.so")
+        ? DynamicLibrary.open('libconvertImage.so')
         : DynamicLibrary.process();
     // Load the convertImage() function from the library
     Convert conv = convertImageLib

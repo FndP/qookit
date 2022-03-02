@@ -1,5 +1,5 @@
 // Service for handling app navigation
-import 'package:flutter/material.dart';
+//import 'package:injectable/injectable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:qookit/app/app_router.gr.dart';
 

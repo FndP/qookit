@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qookit/app/app_router.gr.dart';
@@ -13,7 +12,6 @@ OverlayEntry showFabActions(BuildContext context, NavigationViewModel model) {
   var offset = renderBox.localToGlobal(Offset.zero);
 
   return OverlayEntry(builder: (context) {
-    var screenWidth = MediaQuery.of(context).size.width;
     double step = 100;
 
     return BackdropFilter(

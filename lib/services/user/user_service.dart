@@ -1,9 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
-import 'package:qookit/services/auth/auth_service.dart';
-import 'package:qookit/services/getIt.dart';
 import 'package:qookit/services/services.dart';
 
 @singleton
@@ -19,18 +16,22 @@ class UserService {
   static const String userDiets = 'userDiets';
   static const String userRecommendations = 'userRecommendations';
   static const String userRecipes = 'userRecipes';
+  static const String userEmail = 'userEmail';
+  static const String userId = 'userId';
+
 
   String get uid {
     return authService.uid;
   }
 
   Future<bool> initializeUser() async {
-    print('');
+    print('UserService ');
     try {
-
       await Hive.box('master').put('ready', true);
 
+
       return true;
+
     } on Exception catch (e) {
       print('error: ' + e.toString());
 

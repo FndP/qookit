@@ -97,7 +97,7 @@ class Classifier {
   /// Loads labels from assets
   void loadLabels({List<String> labels}) async {
     try {
-      _labels = labels ?? await FileUtil.loadLabels("assets/" + LABEL_FILE_NAME);
+      _labels = labels ?? await FileUtil.loadLabels('assets/' + LABEL_FILE_NAME);
     } catch (e) {
       print('Error while loading labels: $e');
     }
@@ -116,11 +116,11 @@ class Classifier {
   // non-maximum suppression
   List<Recognition> nms(List<Recognition> list) // Turned from Java's ArrayList to Dart's List.
   {
-    List<Recognition> nmsList = new List<Recognition>();
+    List<Recognition> nmsList = List<Recognition>();
 
     for (int k = 0; k < _labels.length; k++) {
       // 1.find max confidence per class
-      PriorityQueue<Recognition> pq = new HeapPriorityQueue<Recognition>();
+      PriorityQueue<Recognition> pq =  HeapPriorityQueue<Recognition>();
       for (int i = 0; i < list.length; ++i) {
         if (list[i].label == _labels[k]) {
           // Changed from comparing #th class to class to string to string
@@ -207,8 +207,8 @@ class Classifier {
     // TensorBuffers for output tensors
     TensorBuffer outputLocations = TensorBufferFloat(_outputShapes[0]); // The location of each detected object
 
-    List<List<List<double>>> outputClassScores = new List.generate(
-        _outputShapes[1][0], (_) => new List.generate(_outputShapes[1][1], (_) => new List.filled(_outputShapes[1][2], 0.0), growable: false),
+    List<List<List<double>>> outputClassScores = List.generate(
+        _outputShapes[1][0], (_) => List.generate(_outputShapes[1][1], (_) => List.filled(_outputShapes[1][2], 0.0), growable: false),
         growable: false);
 
     // Inputs object for runForMultipleInputs
@@ -294,8 +294,8 @@ class Classifier {
     var predictElapsedTime = DateTime.now().millisecondsSinceEpoch - predictStartTime;
 
     return {
-      "recognitions": recognitionsNMS,
-      "stats": Stats(totalPredictTime: predictElapsedTime, inferenceTime: inferenceTimeElapsed, preProcessingTime: preProcessElapsedTime)
+      'recognitions': recognitionsNMS,
+      'stats': Stats(totalPredictTime: predictElapsedTime, inferenceTime: inferenceTimeElapsed, preProcessingTime: preProcessElapsedTime)
     };
   }
 

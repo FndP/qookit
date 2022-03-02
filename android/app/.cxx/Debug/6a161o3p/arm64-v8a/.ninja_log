@@ -1,3 +1,7 @@
 # ninja log v5
 0	130	666783611	CMakeFiles/convertImage.dir/D_/qookitToParth/qookit/ios/Classes/converter.c.o	d97ee89e2875993b
 131	192	666783611	D:/qookitToParth/qookit/build/app/intermediates/cxx/Debug/6a161o3p/obj/arm64-v8a/libconvertImage.so	9972001612ed9cae
+18	542	667735999	D:/qookitToParth/qookit/build/app/intermediates/cxx/Debug/6a161o3p/obj/arm64-v8a/libconvertImage.so	9972001612ed9cae
+18	1800	667747948	D:/qookitToParth/qookit/build/app/intermediates/cxx/Debug/6a161o3p/obj/arm64-v8a/libconvertImage.so	9972001612ed9cae
+18	390	667904239	D:/qookitToParth/qookit/build/app/intermediates/cxx/Debug/6a161o3p/obj/arm64-v8a/libconvertImage.so	9972001612ed9cae
+24	736	667905555	D:/qookitToParth/qookit/build/app/intermediates/cxx/Debug/6a161o3p/obj/arm64-v8a/libconvertImage.so	9972001612ed9cae

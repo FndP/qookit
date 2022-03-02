@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qookit/app/placeholders.dart';
 import 'package:qookit/ui/navigationView/recipesView/recipeDetails/recipe_details_view_model.dart';

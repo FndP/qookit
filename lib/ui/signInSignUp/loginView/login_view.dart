@@ -1,7 +1,5 @@
 import 'dart:ui';
 
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -15,7 +13,6 @@ class LoginView extends StatelessWidget {
 
   static GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
 
-  GoogleSignInAccount _currentUser;
   String fullName = '';
   String profileImage = '';
   String strEmail = '';
@@ -36,8 +33,7 @@ class LoginView extends StatelessWidget {
                   image: DecorationImage(
                     image: ExactAssetImage('assets/images/loginbg.png'),
                     fit: BoxFit.cover,
-                  ),
-                ),
+                  )),
                 child: Container()),
             Column(
               children: [
@@ -176,7 +172,7 @@ class LoginView extends StatelessWidget {
                                               color: Colors.black,
                                             ),
                                             onPressed: () {
-                                              model.passwordtoggle();
+                                              model.passwordToggle();
                                             }),
                                         contentPadding: EdgeInsets.symmetric(
                                             vertical: 0.0, horizontal: 10.0),
@@ -204,8 +200,7 @@ class LoginView extends StatelessWidget {
                                       text: 'LOG IN',
                                       color: colorTheme,
                                       onPressed: () {
-                                        if (_loginFormKey.currentState
-                                            .validate()) {
+                                        if (_loginFormKey.currentState.validate()) {
                                           model.loginWithEmail(context);
                                         }
                                       },

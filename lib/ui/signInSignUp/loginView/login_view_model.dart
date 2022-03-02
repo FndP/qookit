@@ -1,12 +1,11 @@
 import 'dart:io';
-import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
-import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_lwa/lwa.dart';
 import 'package:qookit/app/app_router.gr.dart';
+import 'package:qookit/services/auth/auth_service.dart';
 import 'package:qookit/services/services.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:stacked/stacked.dart';
@@ -18,10 +17,10 @@ class LoginViewModel extends BaseViewModel {
   String confirmPassword;
   String name;
   bool showPassword = false;
-  bool confirmshowPassword = false;
+  bool confirmShowPassword = false;
   bool passwordVisible = false;
 
-  LwaAuthorizeResult _lwaAuth;
+  LwaAuthorizeResult lwaAuth;
 
   GlobalKey<ScaffoldState> scaffoldKey;
   var globalKey;
@@ -38,15 +37,14 @@ class LoginViewModel extends BaseViewModel {
   final TextEditingController txtEmailId = TextEditingController();
   final TextEditingController txtPassword = TextEditingController();
   final TextEditingController txtConfirmPassword = TextEditingController();
-  final TextEditingController txtEmailIDForgotPassword =
-      TextEditingController();
+  final TextEditingController txtEmailIDForgotPassword = TextEditingController();
 
   String receivedOtp = '';
   String receivedUserId = '';
   Function callback;
   Function callbackOpenPasswordChangedDialog;
 
-  init(callback1, callback2) {
+  void init(callback1, callback2) {
     callback = callback1;
     callbackOpenPasswordChangedDialog = callback2;
   }
@@ -85,25 +83,22 @@ class LoginViewModel extends BaseViewModel {
   }
 
   void toggleShowConfirmPassword() {
-    confirmshowPassword = !confirmshowPassword;
+    confirmShowPassword = !confirmShowPassword;
     notifyListeners();
   }
 
-  void passwordtoggle() {
+  void passwordToggle() {
     passwordVisible = !passwordVisible;
     notifyListeners();
-
   }
 
   Future<void> loginWithEmail(BuildContext context) async {
-    String message =
-        await authService.signInWithEmail(context, email, password);
+    String message = await authService.signInWithEmail(context, email, password);
     if (message == 'Success') {
-      await ExtendedNavigator.named('topNav')
-          .pushAndRemoveUntil(Routes.splashScreenView, (route) => false);
+      await ExtendedNavigator.named('topNav').pushAndRemoveUntil(Routes.splashScreenView, (route) => false);
     } else {
-      Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text(message, textAlign: TextAlign.center),
+      Scaffold.of(context).showSnackBar(
+          SnackBar(content: Text(message, textAlign: TextAlign.center),
       ));
     }
   }
@@ -123,19 +118,21 @@ class LoginViewModel extends BaseViewModel {
     await loginNavigation(message, context);
   }
 
-  Future<void> SignInWithAmazone(BuildContext context) async {
+  Future<void> SignInWithAmazon(BuildContext context) async {
+
     LoginWithAmazon _loginWithAmazon = LoginWithAmazon(
       scopes: <Scope>[ProfileScope.profile(), ProfileScope.postalCode()],
     );
 
     _loginWithAmazon.onLwaAuthorizeChanged.listen((LwaAuthorizeResult auth) {
-      _lwaAuth = auth;
+      lwaAuth = auth;
     });
 
-    await _loginWithAmazon.signInSilently();
+      await _loginWithAmazon.signInSilently();
 
     try {
       await _loginWithAmazon.signIn();
+
     } catch (error) {
       if (error is PlatformException) {
         Scaffold.of(context).showSnackBar(SnackBar(
@@ -151,9 +148,9 @@ class LoginViewModel extends BaseViewModel {
 
   Future<void> loginWithApple(BuildContext context) async {
     if (Platform.isAndroid) {
-      var redirectURL = "";
+      var redirectURL = '';
       // var clientID = "com.appideas.chatcity";
-      var clientID = "com.qookit.mobileapp";
+      var clientID = 'com.qookit.mobileapp';
 
       final appleIdCredential = await SignInWithApple.getAppleIDCredential(
           scopes: [
@@ -196,7 +193,7 @@ class LoginViewModel extends BaseViewModel {
           if (credential.state != null) 'state': credential.state,
         },
       );
-      final session = await http.Client().post(signInWithAppleEndpoint);
+      final session = await http.Client().post(signInWithAppleEndpoint).then((value) => AuthService().updateUserDataToBackend);
       print(session);
     }
   }

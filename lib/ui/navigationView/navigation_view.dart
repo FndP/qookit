@@ -35,7 +35,7 @@ class NavigationView extends StatelessWidget {
                 onPressed: () {
                   if(!model.showOverlay) {
                     model.updateOverlay(true);
-                    Overlay.of(context).insert(model.firstFabOverlay,);
+                    Overlay.of(context).insert(model.firstFabOverlay);
                   } else{
                     model.updateOverlay(false);
                     model.fabOverlay.remove();
@@ -47,21 +47,20 @@ class NavigationView extends StatelessWidget {
                       alignment: Alignment.center,
                       child: SvgPicture.asset(
                         'assets/images/crop_icon.svg',
-                        color: Colors.black,
+                        color: Colors.black
                       ),
                     ),
                     Align(
                       alignment: Alignment.center,
                       child: SvgPicture.asset(
                         'assets/images/add_icon.svg',
-                        color: Colors.black,
+                        color: Colors.black
                       ),
                     ),
                   ],
                 ),
               ),
-              floatingActionButtonLocation:
-                  FloatingActionButtonLocation.centerDocked,
+              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
               bottomNavigationBar: model.hideNav ? null:BottomAppBar(
                 shape: CircularNotchedRectangle(),
                 notchMargin: 4,
@@ -70,10 +69,9 @@ class NavigationView extends StatelessWidget {
                   children: [
                     BottomIcon(model.navItems[0],0,model),
                     BottomIcon(model.navItems[1],1,model),
-                    SizedBox(
-                      height: 40,
-                      width: 48,
-                    ),
+
+                    SizedBox(height: 40, width: 48),
+
                     BottomIcon(model.navItems[2],2,model),
                     BottomIcon(model.navItems[3],3,model),
                   ],
@@ -91,9 +89,7 @@ class NavigationView extends StatelessWidget {
         clipBehavior: Clip.none,
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
-        onPressed: (){
-          model.onItemTapped(index);
-        },
+        onPressed: ()=> model.onItemTapped(index),
         child: Container(
           margin: EdgeInsets.symmetric(vertical: 8),
           height: 50,
@@ -103,7 +99,7 @@ class NavigationView extends StatelessWidget {
             children: [
               SvgPicture.asset(
               item.assetIcon,
-                color: model.selectedIndex == index?Colors.amber:Colors.black,
+                color: model.selectedIndex == index ? Colors.amber : Colors.black,
           ),
               Padding(
                 padding: const EdgeInsets.only(top: 4.0),
@@ -113,7 +109,7 @@ class NavigationView extends StatelessWidget {
                   overflow: TextOverflow.visible,
                   style: GoogleFonts.lato(
                     fontSize: 14,
-                    color: model.selectedIndex == index?Colors.amber:Colors.black,
+                    color: model.selectedIndex == index ? Colors.amber : Colors.black,
                   ),),
                 ),
               )

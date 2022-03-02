@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:qookit/app/app_router.gr.dart';
 import 'package:qookit/services/services.dart';
 import 'package:qookit/services/user/user_service.dart';
 import 'package:qookit/ui/navigationView/profileView/profile_view_model.dart';
@@ -93,7 +91,7 @@ class SettingsIcon extends StatelessWidget {
         color: Colors.black,
       ),
       onTap: (){
-        ExtendedNavigator.named('nestedNav').push(NavigationViewRoutes.settingsView) ;
+        //ExtendedNavigator.named('nestedNav').push(NavigationViewRoutes.settingsView) ;
 
         print('Click');
       },
@@ -156,7 +154,7 @@ class FullName extends ViewModelWidget<ProfileViewModel> {
   Widget build(BuildContext context, model) {
     return Flexible(
       child: Text(
-        hiveService.userBox.get(UserService.fullName, defaultValue: "Karen"),
+        hiveService.userBox.get(UserService.fullName, defaultValue: 'Karen'),
         style: headerStyle.copyWith(
           fontSize: 24
         ),

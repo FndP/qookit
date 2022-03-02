@@ -20,7 +20,7 @@ class ImageUtils {
       List<int> png = pngEncoder.encodeImage(img);
       return png;
     } catch (e) {
-      print(">>>>>>>>>>>> ERROR:" + e.toString());
+      print('>>>>>>>>>>>> ERROR:' + e.toString());
     }
     return null;
   }

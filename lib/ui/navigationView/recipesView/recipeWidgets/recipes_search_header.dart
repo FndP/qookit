@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qookit/ui/navigationView/recipesView/recipeSearch/recipe_search_view_model.dart';
 import 'package:qookit/ui/navigationView/recipesView/recipeWidgets/recipes_search_bar.dart';
-import 'package:qookit/ui/navigationView/recipesView/recipes_view_model.dart';
 import 'package:stacked/stacked.dart';
 
 class RecipesSearchHeader extends ViewModelWidget<RecipeSearchViewModel> {

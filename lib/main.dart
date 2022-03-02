@@ -33,19 +33,14 @@ Future<void> main() async {
   await ThemeManager.initialise();
 
   await Firebase.initializeApp();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-  /*
-  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge,overlays: [
+  /*await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge,overlays: [
     SystemUiOverlay.top,
-  ]);
+  ]);*/
 
-   */
+  await SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
-
-  await SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   runApp(
     App(),
   );
@@ -58,18 +53,22 @@ class App extends StatelessWidget {
         darkTheme: qookitDark,
         lightTheme: qookitLight,
         defaultThemeMode: ThemeMode.light,
-        builder: (context, regularTheme, darkTheme, themeMode) => MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: regularTheme,
-            darkTheme: darkTheme,
-            themeMode: themeMode,
-            home: Container(),
-          builder: (context, nativeNavigator) {
-            return ExtendedNavigator.builder<AppRouter>(
-              router: AppRouter(),
-              name: 'topNav',
-              builder: (context, child) => child,
-            )(context, nativeNavigator);
-          },));
+        builder: (context, regularTheme, darkTheme, themeMode) {
+          return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: regularTheme,
+              darkTheme: darkTheme,
+              themeMode: themeMode,
+              home: Container(),
+              builder: (context, nativeNavigator) {
+                return ExtendedNavigator.builder<AppRouter>(
+                  router: AppRouter(),
+                  name: 'topNav',
+                  builder: (context, child) => child
+                )(context, nativeNavigator);
+              },
+            color: Colors.red,
+            );
+        });
   }
 }

@@ -1,14 +1,14 @@
-import 'package:auto_route/auto_route.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
+import 'package:location/location.dart';
 import 'package:qookit/app/app_router.gr.dart';
+import 'package:qookit/bloc/create_user_bloc.dart';
 import 'package:qookit/services/getIt.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:qookit/services/user/user_service.dart';
 import 'package:qookit/services/utilities/string_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_lwa_platform_interface/flutter_lwa_platform_interface.dart';
@@ -19,6 +19,7 @@ import '../services.dart';
 class AuthService extends ChangeNotifier {
   LwaAuthorizeResult _lwaAuth;
 
+  String currentLatLag;
   FirebaseAuth get auth {
     return FirebaseAuth.instance;
   }
@@ -28,14 +29,12 @@ class AuthService extends ChangeNotifier {
   }
 
   User get user {
-
     return FirebaseAuth.instance.currentUser;
   }
 
   // Firebase auth automatically keeps token updated
   // https://stackoverflow.com/questions/49656489/is-the-firebase-access-token-refreshed-automatically?rq=1#:~:text=Firebase%20automatically%20refreshes%20if%20it,cause%20that%20listener%20to%20trigger.
   Future<String> get token async {
-
     String value = await  auth.currentUser.getIdToken();
     print('Token ' +value);
     return value;
@@ -54,6 +53,7 @@ class AuthService extends ChangeNotifier {
    /* getIt
         .get<NavigationService>()
         .navigateToFirstScreen(route: SplashScreenView.id, context: context);*/
+
     ExtendedNavigator.named('topNav').pushAndRemoveUntil(Routes.loginView, (route) => false);
     notifyListeners();
   }
@@ -64,7 +64,7 @@ class AuthService extends ChangeNotifier {
   Future<String> signInWithEmail(BuildContext context, String email, String password) async {
     String message;
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password).then((value) => updateUserDataToBackend(value));
       // Successfully signed in
 
       return 'Success';
@@ -92,7 +92,7 @@ class AuthService extends ChangeNotifier {
 
     try {
       // Once signed in, return the UserCredential
-      await FirebaseAuth.instance.signInWithCredential(credential);
+      await FirebaseAuth.instance.signInWithCredential(credential).then((value) => updateUserDataToBackend(value));
 
       return 'Success';
     } catch (e) {
@@ -110,7 +110,7 @@ class AuthService extends ChangeNotifier {
 
     try {
       // Once signed in, return the UserCredential
-      await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+      await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential).then((value) => updateUserDataToBackend(value));
 
       return 'Success';
     } catch (e) {
@@ -127,6 +127,7 @@ class AuthService extends ChangeNotifier {
     String message;
     try {
       var userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+      await updateUserDataToBackend(userCredential, name: name);
 
       //await ExtendedNavigator.named('topNav').replace(Routes.recommendationPreferences);
       //await ExtendedNavigator.named('topNav').pushAndRemoveUntil(Routes.splashScreenView, (route) => false);
@@ -145,18 +146,13 @@ class AuthService extends ChangeNotifier {
     }
   }
 
-
-
   // **************************************************************************
   // Email Interaction
   // **************************************************************************
   Future<void> resetPassword(BuildContext context, String email) async {
     if (email.isValidEmail()) {
       try {
-        await getIt
-            .get<AuthService>()
-            .auth
-            .sendPasswordResetEmail(email: email);
+        await getIt.get<AuthService>().auth.sendPasswordResetEmail(email: email);
 
         Scaffold.of(context).showSnackBar(SnackBar(
           content: Text(
@@ -193,5 +189,36 @@ class AuthService extends ChangeNotifier {
     if (deepLink != null) {
       Navigator.pushNamed(context, deepLink.path);
     }
+  }
+// 2445
+
+  Future<void> updateUserDataToBackend(UserCredential value, {String name = ''})  async {
+    print(value);
+   await Location().getLocation().then((location) => CreateUserBloc().postUserData({
+     'userName': name.isNotEmpty? name : value.user.displayName,
+     'photoUrl': value.user.photoURL,
+     'backgroundUrl': 'String',
+     'displayName': name.isNotEmpty? name : value.user.displayName,
+     'personal': {
+       'firstName': 'String',
+       'lastName': 'String',
+       'fullName': 'String',
+       'email': value.user.email,
+       'aboutMe': 'String',
+       'homeUrl': 'String',
+       'location': {
+         'city': 'String',
+         'state': 'String',
+         'country': 'String',
+         'zip': 'String',
+         'gps': location.latitude.toString()+','+location.longitude.toString(),
+         'ip_addr': 'String'}
+     },
+     'preferences': {
+       'units': 'Imperial',
+       'recipe': ['String'],
+       'diet': ['String']
+     }
+   }));
   }
 }

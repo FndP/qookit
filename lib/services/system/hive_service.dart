@@ -5,7 +5,7 @@ import 'package:qookit/services/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 @singleton
-class HiveService {
+class  HiveService {
   Box userBox;
   Box dietsBox;
   Box recipesBox;

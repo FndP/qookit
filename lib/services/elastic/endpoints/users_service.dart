@@ -3,9 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:qookit/models/location.dart';
-import 'package:qookit/models/personal.dart';
-import 'package:qookit/models/preference.dart';
 import 'package:qookit/models/recipe.dart';
 import 'package:qookit/models/user.dart';
 import 'package:qookit/services/services.dart';
@@ -63,7 +60,7 @@ class UsersService {
     }
   }
 
-  Map<String, dynamic> exampleUser = {
+  /*Map<String, dynamic> exampleUser = {
     "userName": null,
     "photoUrl": "string",
     "backgroundUrl": "string",
@@ -82,13 +79,10 @@ class UsersService {
       "recipe": ["string"],
       "diet": ["string"]
     }
-  };
+  };*/
 
-  Future<void> addUserToElastic({
-    @required UserRoot addUser
-  }) async {
+  Future<void> addUserToElastic({@required UserRoot addUser}) async {
     UserRoot thisUser;
-
     /*UserRoot testUser = UserRoot(
       displayName: 'test',
       userName: 'testUser',

@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:qookit/app/app_router.gr.dart';
@@ -7,7 +6,7 @@ import 'package:qookit/services/user/user_service.dart';
 import 'package:qookit/ui/navigationView/navigation_widgets.dart';
 import 'package:stacked/stacked.dart';
 
-class        NavigationViewModel extends BaseViewModel {
+class NavigationViewModel extends BaseViewModel {
   final navigatorKey = GlobalKey<NavigatorState>();
   String screenId;
   int selectedIndex = 0; // The current page selected by the user
@@ -25,7 +24,7 @@ class        NavigationViewModel extends BaseViewModel {
 
   void initializeModel() {
     screenId = hiveService.userBox.get(
-      UserService.lastScreen,
+      UserService.lastScreen
     ); //defaultValue: PantryView.id);
     selectedIndex = routeMap.indexOf(screenId);
   }
@@ -48,8 +47,7 @@ class        NavigationViewModel extends BaseViewModel {
   ];
 
   List<BottomItem> navItems = [
-    BottomItem(
-        'pantry', FontAwesomeIcons.breadSlice, 'assets/images/pantry_icon.svg'),
+    BottomItem('pantry', FontAwesomeIcons.breadSlice, 'assets/images/pantry_icon.svg'),
     BottomItem('recipes', FontAwesomeIcons.utensils, 'assets/images/utensils_icon.svg'),
     BottomItem('shopping', FontAwesomeIcons.shoppingCart, 'assets/images/cart_icon.svg'),
     BottomItem('profile', FontAwesomeIcons.userAlt, 'assets/images/profile_icon.svg'),
@@ -63,8 +61,7 @@ class        NavigationViewModel extends BaseViewModel {
       selectedIndex = index;
       screenId = routeMap[selectedIndex];
       hiveService.userBox.put(UserService.lastScreen, screenId);
-      print(
-          'Index: $index Route: ${routeMap[selectedIndex]} ScreenID: $screenId');
+      print('Index: $index Route: ${routeMap[selectedIndex]} ScreenID: $screenId');
       ExtendedNavigator.named('nestedNav').push(screenId);
       notifyListeners();
     }

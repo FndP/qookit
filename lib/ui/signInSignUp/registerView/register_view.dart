@@ -229,14 +229,14 @@ class RegisterView extends StatelessWidget {
                                     controller: model.txtConfirmPassword,
                                     maxLength: 20,
                                     validator: confirmPwdValidator,
-                                    obscureText: !model.confirmshowPassword,
+                                    obscureText: !model.confirmShowPassword,
                                     textInputAction: TextInputAction.done,
                                     focusNode: model.focusConfirmPassword,
                                     onChanged: (value) {
                                       model.updateConfirm(value);
                                     },
                                     decoration: InputDecoration(
-                                        suffixIcon: model.confirmshowPassword
+                                        suffixIcon: model.confirmShowPassword
                                             ? IconButton(
                                                 icon: Icon(Icons
                                                     .visibility_off_outlined),
