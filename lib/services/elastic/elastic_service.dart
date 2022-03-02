@@ -49,8 +49,10 @@ class ElasticService {
     );
     responseJson = _response(recipeResponse);
 
-    print('Response status: ${recipeResponse.statusCode}');
-    print('Response body: ${recipeResponse.body}');
+    // print('Response status: ${recipeResponse.statusCode}');
+    // print('Response body: ${recipeResponse.body}');
+
+    return UserDataModel.fromJson(responseJson);
   }
 
   // POST AN ITEM

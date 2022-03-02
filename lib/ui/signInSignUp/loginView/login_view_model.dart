@@ -96,8 +96,9 @@ class LoginViewModel extends BaseViewModel {
   Future<void> loginWithEmail(BuildContext context) async {
     String message = await authService.signInWithEmail(context, email, password);
     if (message == 'Success') {
-      await UserBloc().getUserData().then((value){
-        ExtendedNavigator.named('topNav').pushAndRemoveUntil(Routes.splashScreenView, (route) => false);} );
+      await UserBloc().getUserData();
+
+      await ExtendedNavigator.named('topNav').pushAndRemoveUntil(Routes.splashScreenView, (route) => false);
 
     } else {
       Scaffold.of(context).showSnackBar(
