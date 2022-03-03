@@ -28,8 +28,6 @@ class UserService {
     print('UserService ');
     try {
       await Hive.box('master').put('ready', true);
-
-
       return true;
 
     } on Exception catch (e) {

@@ -51,6 +51,7 @@ class ElasticService {
 
     print('Response status: ${recipeResponse.statusCode}');
     print('Response body: ${recipeResponse.body}');
+
   }
 
   // POST AN ITEM
