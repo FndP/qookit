@@ -30,8 +30,8 @@ class CreateUserBloc{
 
       await hiveService.userBox.put(UserService.fullName, unmatchUserReportRequest.userName);
       await hiveService.userBox.put(UserService.displayName, unmatchUserReportRequest.displayName);
+      await hiveService.userBox.put(UserService.userEmail, unmatchUserReportRequest.personal.email);
       await hiveService.userBox.put(UserService.profileImage, unmatchUserReportRequest.photoUrl);
-      await hiveService.userBox.put(UserService.userEmail, unmatchUserReportRequest.backgroundUrl);
       //await hiveService.userBox.put(UserService.userId, unmatchUserReportRequest);
 
       dataSink.add(Response.completed(unmatchUserReportRequest));

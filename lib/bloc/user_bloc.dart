@@ -29,7 +29,7 @@ class UserBloc{
       await hiveService.setupHive();
       await hiveService.userBox.put(UserService.fullName, userDataModel.userName);
       await hiveService.userBox.put(UserService.displayName, userDataModel.displayName);
-      await hiveService.userBox.put(UserService.userEmail, userDataModel.backgroundUrl);
+      await hiveService.userBox.put(UserService.userEmail, userDataModel.personal.email);
       await hiveService.userBox.put(UserService.userId, userDataModel.id);
       print("save data "+ hiveService.userBox.put(UserService.fullName, userDataModel.userName).toString());
 

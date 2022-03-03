@@ -61,6 +61,7 @@ dependencies:
   sign_in_with_apple: ^3.3.0
   location: ^4.3.0
 
+
       #flutter_tflite:
       #git:
     #url: https://github.com/qookit/flutter_tflite.git

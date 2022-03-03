@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:qookit/app/theme/colors.dart';
 import 'package:qookit/services/services.dart';
 import 'package:qookit/services/theme/theme_service.dart';
+import 'package:qookit/services/user/user_service.dart';
+import 'package:qookit/ui/navigationView/profileView/update_profile.dart';
 import 'package:qookit/ui/navigationView/settingsView/setting_view_widgets.dart';
 import 'package:qookit/ui/navigationView/settingsView/settings_view_model.dart';
 import 'package:stacked/stacked.dart';
@@ -38,11 +40,27 @@ class SettingsView extends StatelessWidget {
                 color: Colors.white,
                 child: Center(
                     child: ListTile(
-                        title: Text('Karen Smith',
+                        title: Text(hiveService.userBox.get(UserService.displayName, defaultValue: 'Karen'),
                             style: headerStyle.copyWith(fontSize: 24)),
-                        subtitle: Text('EDIT PROFILE'),
-                        leading:
-                            Icon(Icons.account_circle_rounded, size: 60)))),
+                        subtitle: InkWell(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>UpdateProfile()));
+                            },
+                            child: Text('EDIT PROFILE')),
+                        leading: Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            //shape: BoxShape.circle,
+                            color: Colors.amber,
+                            borderRadius: BorderRadius.circular(50),
+                            border: Border.all(color: Colors.blue),
+                            image: DecorationImage(
+                              image: NetworkImage(hiveService.userBox.get(UserService.profileImage, defaultValue: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')),
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        )))),
             SubSection(),
             SizedBox(height: 20),
             ListTile(
@@ -52,7 +70,7 @@ class SettingsView extends StatelessWidget {
                     Icon(Icons.arrow_forward_ios, color: Colors.transparent),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () {
-                  authService.signOut(context);
+                  //authService.signOut(context);
                 }),
             SizedBox(height: 20),
           ]),

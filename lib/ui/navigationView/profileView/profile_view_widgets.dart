@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:qookit/app/app_router.gr.dart';
 import 'package:qookit/services/services.dart';
 import 'package:qookit/services/user/user_service.dart';
 import 'package:qookit/ui/navigationView/profileView/profile_view_model.dart';
+import 'package:qookit/ui/navigationView/settingsView/settings_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:qookit/services/theme/theme_service.dart';
 
@@ -91,8 +93,8 @@ class SettingsIcon extends StatelessWidget {
         color: Colors.black,
       ),
       onTap: (){
-        //ExtendedNavigator.named('nestedNav').push(NavigationViewRoutes.settingsView) ;
-
+        /*ExtendedNavigator.named('nestedNav').push(NavigationViewRoutes.settingsView);*/
+        Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(builder: (context) => SettingsView()));
         print('Click');
       },
     );
@@ -113,7 +115,12 @@ class ProfileImage extends ViewModelWidget<ProfileViewModel> {
               //shape: BoxShape.circle,
               color: Colors.amber,
               borderRadius: BorderRadius.circular(50),
-              border: Border.all(color: Colors.blue)),
+              border: Border.all(color: Colors.blue),
+            image: DecorationImage(
+              image: NetworkImage(hiveService.userBox.get(UserService.profileImage, defaultValue: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')),
+              fit: BoxFit.cover,
+            ),
+          ),
 
         ),
       ),
