@@ -4,14 +4,16 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:qookit/app/theme/colors.dart';
+import 'package:qookit/bloc/user_bloc.dart';
 import 'package:qookit/elements/block_button_widget.dart';
+import 'package:qookit/services/elastic/elastic_service.dart';
+import 'package:qookit/services/elastic/endpoints/users_service.dart';
 import 'package:qookit/services/services.dart';
 import 'package:qookit/services/user/user_service.dart';
 import 'package:qookit/services/utilities/string_service.dart';
 import 'package:qookit/ui/signInSignUp/loginView/login_components.dart';
 import 'package:qookit/ui/signInSignUp/loginView/login_view_model.dart';
 import 'package:stacked/stacked.dart';
-
 
 class UpdateProfile extends StatefulWidget {
   const UpdateProfile({Key key}) : super(key: key);
@@ -26,17 +28,23 @@ class _UpdateProfileState extends State<UpdateProfile> {
   String urlimg1;
   String document_path1;
 
-  TextEditingController  nameController = TextEditingController(text:  hiveService.userBox.get(UserService.fullName, defaultValue: 'Karen'));
-  TextEditingController emailController = TextEditingController(text: hiveService.userBox.get(UserService.userEmail, defaultValue: ' '));
+  TextEditingController nameController = TextEditingController(
+      text:
+          hiveService.userBox.get(UserService.displayName, defaultValue: 'Karen'));
+  TextEditingController emailController = TextEditingController(
+      text: hiveService.userBox.get(UserService.userEmail, defaultValue: ' '));
 
   @override
   void initState() {
     super.initState();
-    urlimg1 = hiveService.userBox.get(UserService.profileImage, defaultValue: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
+    urlimg1 = hiveService.userBox.get(UserService.profileImage,
+        defaultValue:
+            'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
   }
+
   @override
   Widget build(BuildContext context) {
-    var query = MediaQuery.of(context).size;
+
     return ViewModelBuilder<LoginViewModel>.reactive(
       viewModelBuilder: () => LoginViewModel(),
       builder: (contest, model, child) {
@@ -55,204 +63,200 @@ class _UpdateProfileState extends State<UpdateProfile> {
                     key: _loginFormKey,
                     child: SingleChildScrollView(
                         child: Container(
-                          width: double.infinity,
-                          child: Container(
-                            margin: EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withAlpha(230),
-                              borderRadius: BorderRadius.all(Radius.circular(
+                      width: double.infinity,
+                      child: Container(
+                        margin: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withAlpha(230),
+                          borderRadius: BorderRadius.all(Radius.circular(
                                   10.0) //                 <--- border radius here
                               ),
-                            ),
-                            child: Column(
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(height: 30),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                SizedBox(height: 30),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    InkWell(
-                                      child: Container(
-                                        margin: EdgeInsets.only(left: 10),
-                                        height: 25, // height of the button
-                                        width: 25, // width of the button
-                                        child: Center(
-                                          child: Image.asset(
-                                              'assets/images/back.png',
-                                              width: 25,
-                                              height: 25,
-                                              fit: BoxFit.contain),
-                                        ),
-                                      ),
-                                      onTap: () {
-                                        Navigator.of(context).pop();
-                                      },
+                                InkWell(
+                                  child: Container(
+                                    margin: EdgeInsets.only(left: 10),
+                                    height: 25, // height of the button
+                                    width: 25, // width of the button
+                                    child: Center(
+                                      child: Image.asset(
+                                          'assets/images/back.png',
+                                          width: 25,
+                                          height: 25,
+                                          fit: BoxFit.contain),
                                     ),
-
-                                    Text(
-                                      'Edit Profile',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 23,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'sofia_bold'),
-                                    ),
-                                    SizedBox(width: 30),
-                                  ],
+                                  ),
+                                  onTap: () {
+                                    Navigator.of(context).pop();
+                                  },
                                 ),
-                                SizedBox(height: 30),
-                            IconButton(
-                              icon: ClipRRect(
-                                borderRadius: BorderRadius.circular(100),
-                                child: _image1 == null
-                                    ? Image.network(
-                                  urlimg1 == ""
-                                      ? "https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg"
-                                      : urlimg1,
-                                  width: 100,
-                                  height: 100,
-                                  fit: BoxFit.fill,
-                                )
-                                    : Image.file(_image1,
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.fill),
-                              ),
-                              onPressed: () async {
-                                var imageFile1 = await ImagePicker.platform.pickImage(
-                                  source: ImageSource.gallery,
-                                );
-                                setState(() {
-                                  print(document_path1);
-                                });
-                                document_path1 = imageFile1.path;
-                                if (document_path1.indexOf('file://') == 0) {
-                                  document_path1 = document_path1.split('file://')[1];
-                                  print(document_path1);
-                                }
-                                setState(() {
-                                  _image1 = imageFile1 as File;
-                                  print(document_path1);
-                                });
-                              },
-                              iconSize: 100),
-                                Column(
-                                  children: <Widget>[
-                                    SizedBox(height: 10),
-                                    Container(
-                                      margin: EdgeInsets.only(
-                                          left: 20, right: 20, top: 0, bottom: 10),
-                                      child: TextFormField(
-                                        controller: nameController,
-                                        maxLength: 100,
-                                        validator: nameValidator,
-                                        textInputAction: TextInputAction.next,
-                                        focusNode: model.focusName,
-                                        onFieldSubmitted: (term) {
-                                          model.focusName.unfocus();
-                                          FocusScope.of(context)
-                                              .requestFocus(model.focusNumber);
-                                        },
-                                        onChanged: (value) {
-                                          model.updateName(value);
-                                        },
-                                        decoration: InputDecoration(
-                                            contentPadding: EdgeInsets.symmetric(
-                                                vertical: 0.0, horizontal: 10.0),
-                                            hintText: 'Enter Full Name',
-                                            labelText: 'Name',
-                                            counterText: '',
-                                            labelStyle: TextStyle(
-                                                fontFamily: 'opensans',
-                                                fontSize: 14),
-                                            hintStyle: TextStyle(
-                                                fontFamily: 'opensans',
-                                                fontSize: 14)),
-                                      ),
-                                    ),
-                                    SizedBox(height: 5),
-                                    Container(
-                                      margin: EdgeInsets.only(
-                                          left: 20, right: 20, top: 5, bottom: 10),
-                                      child: TextFormField(
-                                        controller: emailController,
-                                        maxLength: 100,
-                                        enabled: false,
-                                        keyboardType: TextInputType.emailAddress,
-                                        textInputAction: TextInputAction.next,
-                                        focusNode: model.focusNumber,
-                                        validator: emailValidator,
-                                        onFieldSubmitted: (term) {
-                                          model.focusNumber.unfocus();
-                                          FocusScope.of(context)
-                                              .requestFocus(model.focusPassword);
-                                        },
-                                        onChanged: (value) {
-                                          model.updateEmail(value);
-                                        },
-                                        decoration: InputDecoration(
-                                            contentPadding: EdgeInsets.symmetric(
-                                                vertical: 0.0, horizontal: 10.0),
-                                            hintText: 'Enter Email ID',
-                                            labelText: 'Email ID',
-                                            counterText: '',
-                                            labelStyle: TextStyle(
-                                                fontFamily: 'opensans',
-                                                fontSize: 14),
-                                            hintStyle: TextStyle(
-                                                fontFamily: 'opensans',
-                                                fontSize: 14)),
-                                      ),
-                                    ),
-                                    SizedBox(height: 10),
-
-                                    Builder(
-                                      builder: (context) => BlockButtonWidget(
-                                        text: 'UPDATE',
-                                        color: colorTheme,
-                                        onPressed: () {
-                                          if (_loginFormKey.currentState.validate()) {
-                                            updateProfile();
-                                          }
-                                        },
-                                      ),
-                                    ),
-                                  ],
+                                Text(
+                                  'Edit Profile',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 23,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'sofia_bold'),
                                 ),
-                                SizedBox(height: 30),
-
+                                SizedBox(width: 30),
                               ],
                             ),
-                          ),
-                        ))),
+                            SizedBox(height: 30),
+                            /*IconButton(
+                                icon: ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: _image1 == null
+                                      ? Image.network(
+                                          urlimg1 == ""
+                                              ? "https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg"
+                                              : urlimg1,
+                                          width: 100,
+                                          height: 100,
+                                          fit: BoxFit.fill,
+                                        )
+                                      : Image.file(_image1,
+                                          width: 100,
+                                          height: 100,
+                                          fit: BoxFit.fill),
+                                ),
+                                onPressed: () async {
+                                  var imageFile1 =
+                                      await ImagePicker.platform.pickImage(
+                                    source: ImageSource.gallery,
+                                  );
+                                  setState(() {
+                                    print(document_path1);
+                                  });
+                                  document_path1 = imageFile1.path;
+                                  if (document_path1.indexOf('file://') == 0) {
+                                    document_path1 =
+                                        document_path1.split('file://')[1];
+                                    print(document_path1);
+                                  }
+                                  setState(() {
+                                    _image1 = imageFile1 as File;
+                                    print(document_path1);
+                                  });
+                                },
+                                iconSize: 100),*/
+                            Column(
+                              children: <Widget>[
+                                SizedBox(height: 10),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      left: 20, right: 20, top: 0, bottom: 10),
+                                  child: TextFormField(
+                                    controller: nameController,
+                                    maxLength: 100,
+                                    validator: nameValidator,
+                                    textInputAction: TextInputAction.next,
+                                    focusNode: model.focusName,
+                                    onFieldSubmitted: (term) {
+                                      model.focusName.unfocus();
+                                      FocusScope.of(context)
+                                          .requestFocus(model.focusNumber);
+                                    },
+                                    onChanged: (value) {
+                                      model.updateName(value);
+                                    },
+                                    decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.symmetric(
+                                            vertical: 0.0, horizontal: 10.0),
+                                        hintText: 'Enter Full Name',
+                                        labelText: 'Name',
+                                        counterText: '',
+                                        labelStyle: TextStyle(
+                                            fontFamily: 'opensans',
+                                            fontSize: 14),
+                                        hintStyle: TextStyle(
+                                            fontFamily: 'opensans',
+                                            fontSize: 14)),
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      left: 20, right: 20, top: 5, bottom: 10),
+                                  child: TextFormField(
+                                    controller: emailController,
+                                    maxLength: 100,
+                                    enabled: false,
+                                    keyboardType: TextInputType.emailAddress,
+                                    textInputAction: TextInputAction.next,
+                                    focusNode: model.focusNumber,
+                                    validator: emailValidator,
+                                    onFieldSubmitted: (term) {
+                                      model.focusNumber.unfocus();
+                                      FocusScope.of(context)
+                                          .requestFocus(model.focusPassword);
+                                    },
+                                    onChanged: (value) {
+                                      model.updateEmail(value);
+                                    },
+                                    decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.symmetric(
+                                            vertical: 0.0, horizontal: 10.0),
+                                        hintText: 'Enter Email ID',
+                                        labelText: 'Email ID',
+                                        counterText: '',
+                                        labelStyle: TextStyle(
+                                            fontFamily: 'opensans',
+                                            fontSize: 14),
+                                        hintStyle: TextStyle(
+                                            fontFamily: 'opensans',
+                                            fontSize: 14)),
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Builder(
+                                  builder: (context) => BlockButtonWidget(
+                                    text: 'UPDATE',
+                                    color: colorTheme,
+                                    onPressed: () {
+                                      if (_loginFormKey.currentState
+                                          .validate()) {
+                                        updateProfile(model);
+                                      }
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 30),
+                          ],
+                        ),
+                      ),
+                    ))),
               )),
         );
       },
     );
   }
 
-  Future<void> updateProfile() async {
-
+  Future<void> updateProfile(LoginViewModel model) async {
     var userId = hiveService.userBox.get(UserService.userId);
 
     var token = await authService.token;
 
-      var map = new Map<String, dynamic>();
-      map['op'] = 'replace';
-      map['path'] = 'userName';
-      map['from'] = {'displayName' : hiveService.userBox.get(UserService.displayName)};
-
-      print("jsonEncode  " + jsonEncode(map));
-      final response = await http.patch(Uri.parse('https://'+ elasticService.domain+'/v1/user/'+ userId),
-            headers: {
-                'Authorization': 'Bearer $token',
-              //'Content-Type': 'application/json-patch+json',
-              //HttpHeaders.contentTypeHeader: 'application/json'
-            },
-            body: json.encode(map)
-        );
-      print('response ' + response.body.toString());
-      return response;
-      }
-
+    final response = await http.patch(
+        Uri.parse(elasticService.domain + '/v1/user/' + userId),
+        headers: {
+          'Authorization': 'Bearer $token',
+          'accept': 'application/json',
+          'Content-Type': 'application/json-patch+json',
+        },
+        body: json.encode([{'op': 'replace', 'path': 'displayName', 'value': nameController.text}]));
+    print('response ' + response.body.toString());
+    print('response ' + response.statusCode.toString());
+    if(response.statusCode==200){
+      await UserBloc().getUserData();
+      Navigator.pop(context);
+    }
+    return response;
   }
-
+}

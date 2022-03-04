@@ -113,6 +113,9 @@ class LoginViewModel extends BaseViewModel {
   }
 
   Future<void> loginWithFacebook(BuildContext context) async {
+
+
+
     String message = await authService.signInWithFacebook();
     await loginNavigation(message, context);
   }
@@ -126,6 +129,7 @@ class LoginViewModel extends BaseViewModel {
 
     LoginWithAmazon _loginWithAmazon = LoginWithAmazon(
       scopes: <Scope>[ProfileScope.profile(), ProfileScope.postalCode()],
+
     );
 
     _loginWithAmazon.onLwaAuthorizeChanged.listen((LwaAuthorizeResult auth) {
@@ -135,6 +139,7 @@ class LoginViewModel extends BaseViewModel {
       await _loginWithAmazon.signInSilently();
 
     try {
+
       await _loginWithAmazon.signIn();
 
     } catch (error) {

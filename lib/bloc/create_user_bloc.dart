@@ -8,30 +8,39 @@ import 'package:qookit/services/elastic/endpoints/users_service.dart';
 import 'package:qookit/services/services.dart';
 import 'package:qookit/services/user/user_service.dart';
 
-class CreateUserBloc{
-
+class CreateUserBloc {
   ElasticService elasticService;
-  StreamController<Response<UnmatchUserReportRequestModel>> postCreateuserBlocController;
+  StreamController<Response<UnmatchUserReportRequestModel>>
+      postCreateuserBlocController;
 
+  StreamSink<Response<UnmatchUserReportRequestModel>> get dataSink =>
+      postCreateuserBlocController.sink;
 
-  StreamSink<Response<UnmatchUserReportRequestModel>> get dataSink => postCreateuserBlocController.sink;
-  Stream<Response<UnmatchUserReportRequestModel>> get dataStream => postCreateuserBlocController.stream;
+  Stream<Response<UnmatchUserReportRequestModel>> get dataStream =>
+      postCreateuserBlocController.stream;
 
-  CreateUserBloc(){
+  CreateUserBloc() {
     elasticService = ElasticService();
-    postCreateuserBlocController = StreamController<Response<UnmatchUserReportRequestModel>>();
+    postCreateuserBlocController =
+        StreamController<Response<UnmatchUserReportRequestModel>>();
   }
 
   Future<Null> postUserData(Map<String, dynamic> details) async {
     dataSink.add(Response.loading('Creating User...'));
     try {
-      UnmatchUserReportRequestModel unmatchUserReportRequest = await elasticService.postItem(UsersService.endpoint, details);
+      UnmatchUserReportRequestModel unmatchUserReportRequest =
+          await elasticService.postItem(UsersService.endpoint, details);
+
       ///store data in local db (hive)
 
-      await hiveService.userBox.put(UserService.fullName, unmatchUserReportRequest.userName);
-      await hiveService.userBox.put(UserService.displayName, unmatchUserReportRequest.displayName);
-      await hiveService.userBox.put(UserService.userEmail, unmatchUserReportRequest.personal.email);
-      await hiveService.userBox.put(UserService.profileImage, unmatchUserReportRequest.photoUrl);
+      await hiveService.userBox
+          .put(UserService.fullName, unmatchUserReportRequest.userName);
+      await hiveService.userBox
+          .put(UserService.displayName, unmatchUserReportRequest.displayName);
+      await hiveService.userBox
+          .put(UserService.userEmail, unmatchUserReportRequest.personal.email);
+      await hiveService.userBox
+          .put(UserService.profileImage, unmatchUserReportRequest.photoUrl);
       //await hiveService.userBox.put(UserService.userId, unmatchUserReportRequest);
 
       dataSink.add(Response.completed(unmatchUserReportRequest));

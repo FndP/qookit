@@ -534,8 +534,8 @@ class RegisterView extends StatelessWidget {
                               ),
                               child: GestureDetector(
                                 child: Center(
-                                  child: new GestureDetector(
-                                      child: new Text("SUBMIT",
+                                  child:  GestureDetector(
+                                      child:  Text("SUBMIT",
                                           style: TextStyle(
                                               color: colorTheme2,
                                               fontSize: 15,
@@ -546,7 +546,7 @@ class RegisterView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        new SizedBox(
+                        SizedBox(
                           height: 5,
                         ),
                       ],

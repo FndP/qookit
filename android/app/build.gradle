@@ -95,7 +95,7 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.facebook.android:facebook-android-sdk:[5,11)'
+    implementation 'com.facebook.android:facebook-android-sdk:[8,9)'
     implementation 'com.google.guava:guava:27.0.1-android'
 }
 apply plugin: 'com.google.gms.google-services'

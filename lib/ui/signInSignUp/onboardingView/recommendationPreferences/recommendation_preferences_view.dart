@@ -21,7 +21,7 @@ class RecommendationPreferences extends StatelessWidget {
                   child: Column(
                     children: [
                       BackgroundImage(model.background),
-                      OnboardingTitle(model.title + ' ${  hiveService.userBox.get(UserService.displayName)}!'),
+                      OnboardingTitle(model.title + ' ${hiveService.userBox.get(UserService.displayName, defaultValue: 'Karen')}!'),
                       OnboardingSubtitle(model.subtitle),
                       Recommendations(model, context),
                       OnboardingButtons(context, true, false, model.nextRoute)

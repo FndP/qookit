@@ -13,7 +13,7 @@ import 'package:qookit/utils/custom_exception.dart';
 
 @injectable
 class ElasticService {
-  String domain = 'qookit.ddns.net';
+  String domain = 'https://qookit.ddns.net';
 
   // List of DB endpoints
   String get recipesUrl {
@@ -37,7 +37,7 @@ class ElasticService {
   // GET ALL ITEMS
   Future<UserDataModel> getList(String endpoint) async {
     var responseJson;
-    var uri = Uri.https(elasticService.domain, endpoint);
+    var uri = Uri.parse(elasticService.domain+endpoint);
     var token = await authService.token;
 
     var recipeResponse = await http.get(uri,

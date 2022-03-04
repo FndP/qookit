@@ -116,10 +116,10 @@ class ProfileImage extends ViewModelWidget<ProfileViewModel> {
               color: Colors.amber,
               borderRadius: BorderRadius.circular(50),
               border: Border.all(color: Colors.blue),
-            image: DecorationImage(
+            /*image: DecorationImage(
               image: NetworkImage(hiveService.userBox.get(UserService.profileImage, defaultValue: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')),
               fit: BoxFit.cover,
-            ),
+            ),*/
           ),
 
         ),
@@ -161,7 +161,7 @@ class FullName extends ViewModelWidget<ProfileViewModel> {
   Widget build(BuildContext context, model) {
     return Flexible(
       child: Text(
-        hiveService.userBox.get(UserService.fullName, defaultValue: 'Karen'),
+        hiveService.userBox.get(UserService.displayName, defaultValue: 'Karen'),
         style: headerStyle.copyWith(
           fontSize: 24
         ),
