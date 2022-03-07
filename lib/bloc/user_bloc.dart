@@ -11,7 +11,6 @@ class UserBloc{
   ElasticService elasticService;
   StreamController<Response<UserDataModel>> UserBlocController;
 
-
   StreamSink<Response<UserDataModel>> get dataSink => UserBlocController.sink;
   Stream<Response<UserDataModel>> get dataStream => UserBlocController.stream;
 

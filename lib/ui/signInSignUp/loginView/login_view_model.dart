@@ -109,6 +109,7 @@ class LoginViewModel extends BaseViewModel {
 
   Future<void> loginWithGoogle(BuildContext context) async {
     String message = await authService.signInWithGoogle();
+    await UserBloc().getUserData();
     await loginNavigation(message, context);
   }
 
@@ -116,7 +117,7 @@ class LoginViewModel extends BaseViewModel {
 
 
 
-    String message = await authService.signInWithFacebook();
+    String message = await authService.initiateFacebookLogin();
     await loginNavigation(message, context);
   }
 
@@ -127,13 +128,11 @@ class LoginViewModel extends BaseViewModel {
 
   Future<void> SignInWithAmazon(BuildContext context) async {
 
-    LoginWithAmazon _loginWithAmazon = LoginWithAmazon(
-      scopes: <Scope>[ProfileScope.profile(), ProfileScope.postalCode()],
-
-    );
+    LoginWithAmazon _loginWithAmazon = LoginWithAmazon(scopes: <Scope>[ProfileScope.profile(), ProfileScope.postalCode()],);
 
     _loginWithAmazon.onLwaAuthorizeChanged.listen((LwaAuthorizeResult auth) {
       lwaAuth = auth;
+      ///todo hio need to up user data in amazon.
     });
 
       await _loginWithAmazon.signInSilently();
@@ -214,7 +213,7 @@ class LoginViewModel extends BaseViewModel {
     } else {
       Scaffold.of(context).showSnackBar(SnackBar(
         content: Text(
-          message,
+          '$message',
           textAlign: TextAlign.center,
         ),
       ));

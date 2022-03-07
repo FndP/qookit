@@ -28,19 +28,14 @@ class CreateUserBloc {
   Future<Null> postUserData(Map<String, dynamic> details) async {
     dataSink.add(Response.loading('Creating User...'));
     try {
-      UnmatchUserReportRequestModel unmatchUserReportRequest =
-          await elasticService.postItem(UsersService.endpoint, details);
+      UnmatchUserReportRequestModel unmatchUserReportRequest = await elasticService.postItem(UsersService.endpoint, details);
 
       ///store data in local db (hive)
 
-      await hiveService.userBox
-          .put(UserService.fullName, unmatchUserReportRequest.userName);
-      await hiveService.userBox
-          .put(UserService.displayName, unmatchUserReportRequest.displayName);
-      await hiveService.userBox
-          .put(UserService.userEmail, unmatchUserReportRequest.personal.email);
-      await hiveService.userBox
-          .put(UserService.profileImage, unmatchUserReportRequest.photoUrl);
+      await hiveService.userBox.put(UserService.fullName, unmatchUserReportRequest.userName);
+      await hiveService.userBox.put(UserService.displayName, unmatchUserReportRequest.displayName);
+      await hiveService.userBox.put(UserService.userEmail, unmatchUserReportRequest.personal.email);
+      await hiveService.userBox.put(UserService.profileImage, unmatchUserReportRequest.photoUrl);
       //await hiveService.userBox.put(UserService.userId, unmatchUserReportRequest);
 
       dataSink.add(Response.completed(unmatchUserReportRequest));

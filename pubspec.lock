@@ -391,27 +391,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
-  flutter_facebook_auth:
+  flutter_facebook_login:
     dependency: "direct main"
     description:
-      name: flutter_facebook_auth
+      name: flutter_facebook_login
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.5.7"
-  flutter_facebook_auth_platform_interface:
-    dependency: transitive
-    description:
-      name: flutter_facebook_auth_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.7.1"
-  flutter_facebook_auth_web:
-    dependency: transitive
-    description:
-      name: flutter_facebook_auth_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.6.0+2"
+    version: "3.0.0"
   flutter_launcher_icons:
     dependency: "direct dev"
     description:

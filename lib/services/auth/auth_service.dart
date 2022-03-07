@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +9,11 @@ import 'package:location/location.dart';
 import 'package:qookit/app/app_router.gr.dart';
 import 'package:qookit/bloc/create_user_bloc.dart';
 import 'package:qookit/services/getIt.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:http/http.dart' as http;
 import 'package:qookit/services/utilities/string_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_lwa_platform_interface/flutter_lwa_platform_interface.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 import '../services.dart';
 
@@ -52,7 +55,7 @@ class AuthService extends ChangeNotifier {
    /* getIt
         .get<NavigationService>()
         .navigateToFirstScreen(route: SplashScreenView.id, context: context);*/
-    FacebookAuth.instance.logOut();
+    FacebookLogin().logOut();
     ExtendedNavigator.named('topNav').pushAndRemoveUntil(Routes.loginView, (route) => false);
     notifyListeners();
   }
@@ -91,33 +94,34 @@ class AuthService extends ChangeNotifier {
 
     try {
       // Once signed in, return the UserCredential
-      await FirebaseAuth.instance.signInWithCredential(credential).then((value) => CreateUserBloc().postUserData({
-        'userName': value.user.displayName,
-        'photoUrl': value.user.photoURL,
-        'backgroundUrl': 'String',
-        'displayName': value.user.displayName,
-        'personal': {
-          'firstName': 'String',
-          'lastName': 'String',
-          'fullName': 'String',
-          'email': value.user.email,
-          'aboutMe': 'String',
-          'homeUrl': 'String',
-          'location': {
-            'city': 'String',
-            'state': 'String',
-            'country': 'String',
-            'zip': 'String',
-            'gps': "25.22, 25.55",
-            'ip_addr': 'String'}
-        },
-        'preferences': {
-          'units': 'Imperial',
-          'recipe': ['String'],
-          'diet': ['String']
-        }
-      }));
-
+      var userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+      await updateUserDataToBackend(userCredential);
+      /*await CreateUserBloc().postUserData({
+          'userName': value.user.displayName,
+          'photoUrl': value.user.photoURL,
+          'backgroundUrl': 'String',
+          'displayName': value.user.displayName,
+          'personal': {
+            'firstName': 'String',
+            'lastName': 'String',
+            'fullName': 'String',
+            'email': value.user.email,
+            'aboutMe': 'String',
+            'homeUrl': 'String',
+            'location': {
+              'city': 'String',
+              'state': 'String',
+              'country': 'String',
+              'zip': 'String',
+              'gps': "25.22, 25.55",
+              'ip_addr': 'String'}
+          },
+          'preferences': {
+            'units': 'Imperial',
+            'recipe': ['String'],
+            'diet': ['String']
+          }
+        });*/
       return 'Success';
     } catch (e) {
       print(e.toString());
@@ -125,42 +129,68 @@ class AuthService extends ChangeNotifier {
     }
   }
 
-   signInWithFacebook() async {
-      // Trigger the sign-in flow
-      final loginResult = await FacebookAuth.instance.login(permissions: ['public_profile', 'email']).then((value){
-        final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(value.accessToken.token);
+  //  signInWithFacebook() async {
+  //     // Trigger the sign-in flow
+  //     // final loginResult = await FacebookAuth.instance.login(permissions: ['public_profile', 'email']).then((value){
+  //     //   final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(value.accessToken.token);
+  //     //
+  //     //   // Once signed in, return the UserCredential
+  //     //   FirebaseAuth.instance.signInWithCredential(facebookAuthCredential).then((value){
+  //     //     if(FirebaseAuth.instance.currentUser!=null){
+  //     //       print('login success');
+  //     //     }else{
+  //     //       print(value.toString());
+  //     //     }
+  //     //   });
+  //     // });
+  //
+  //     // Create a credential from the access token
+  //
+  //
+  //
+  //   final result = await FacebookAuth.instance.login(permissions: [/*'public_profile',*/ 'email']);
+  //   print(result);
+  //   final userData = await FacebookAuth.instance.getUserData();
+  //   print(userData);
+  //   // Create a credential from the access token
+  //   final FacebookAuthCredential facebookAuthCredential = FacebookAuthProvider.credential('${result.accessToken.token}');
+  //
+  //   try {
+  //     // Once signed in, return the UserCredential
+  //     await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential).then((value) => updateUserDataToBackend(value));
+  //
+  //     return 'Success';
+  //   } catch (e) {
+  //     print(e.toString());
+  //     return e.toString();
+  //   }
+  // }
 
-        // Once signed in, return the UserCredential
-        FirebaseAuth.instance.signInWithCredential(facebookAuthCredential).then((value){
-          if(FirebaseAuth.instance.currentUser!=null){
-            print("login success");
-          }else{
-            print(value.toString());
-          }
-        });
-      });
+  Future<String> initiateFacebookLogin() async {
+    var facebookLogin = FacebookLogin();
+    var facebookLoginResult = await facebookLogin.logIn(['public_profile', 'email']);
 
-      // Create a credential from the access token
+    switch (facebookLoginResult.status) {
+      case FacebookLoginStatus.error:
+        print(facebookLoginResult.errorMessage);
+        return 'Faild';
+        break;
+      case FacebookLoginStatus.cancelledByUser:
+        print('Something went wrong');
+        return 'Faild';
+        break;
+      case FacebookLoginStatus.loggedIn:
 
+        var graphResponse = await http.get(Uri.parse('https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email,picture.width(400)&access_token=${facebookLoginResult.accessToken.token}'));
 
-
-    // final result = await FacebookAuth.instance.login(permissions: ['public_profile', 'email']);
-    // print(result);
-    // final userData = await FacebookAuth.instance.getUserData();
-    // print(userData);
-    // // Create a credential from the access token
-    // final FacebookAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(result.token);
-    //
-    // try {
-    //   // Once signed in, return the UserCredential
-    //   await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential).then((value) => updateUserDataToBackend(value));
-    //
-    //   return 'Success';
-    // } catch (e) {
-    //   print(e.toString());
-    //   return e.toString();
-    // }
+        var profile = json.decode(graphResponse.body);
+        print(profile.toString());
+        return 'Success';
+        // onLoginStatusChanged(true, profileData: profile);
+        break;
+    }
   }
+
 
   // **************************************************************************
   // Sign Up Methods
@@ -205,11 +235,9 @@ class AuthService extends ChangeNotifier {
         ));
       } catch (e) {
         Scaffold.of(context).showSnackBar(SnackBar(
-          content: Text(
-            e,
+          content: Text(e,
             textAlign: TextAlign.center,
-          ),
-        ));
+          )));
         print(e);
       }
     } else {
@@ -230,10 +258,9 @@ class AuthService extends ChangeNotifier {
     final Uri deepLink = data?.link;
 
     if (deepLink != null) {
-      Navigator.pushNamed(context, deepLink.path);
+      await Navigator.pushNamed(context, deepLink.path);
     }
   }
-// 2445
 
   Future<void> updateUserDataToBackend(UserCredential value, {String name = ''})  async {
     print(value);
