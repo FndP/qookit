@@ -70,9 +70,7 @@ class _ProfileViewState extends State<ProfileView> {
                                           hiveService.userBox.get(UserService.displayName, defaultValue: 'Karen'),
                                           style: headerStyle.copyWith(
                                               fontSize: 24
-                                          ),
-                                        ),
-                                      ),
+                                          ))),
                                     Preferences(constraints.maxWidth),
                                   ],
                                 ),
@@ -82,11 +80,10 @@ class _ProfileViewState extends State<ProfileView> {
                           InkWell(
                             child: SvgPicture.asset(
                               'assets/images/settings_icon.svg',
-                              color: Colors.black,
-                            ),
+                              color: Colors.black),
                             onTap: () {
-                              Navigator.of(context, rootNavigator: true)
-                                  .push(MaterialPageRoute(builder: (context) => SettingsView())).then((value) {
+                              Navigator.of(context, rootNavigator: true).push(
+                                  MaterialPageRoute(builder: (context) => SettingsView())).then((value) {
                                 setState(() {
                                   UserBloc().getUserData();
                                   print('setting click');

@@ -1,2 +1,2 @@
 ninja: Entering directory `D:\qookitToParth\qookit\android\app\.cxx\cmake\debug\x86'
-[1/1] Linking C shared library D:\qookitToParth\qookit\build\app\intermediates\cmake\debug\obj\x86\libconvertImage.so
+ninja: no work to do.

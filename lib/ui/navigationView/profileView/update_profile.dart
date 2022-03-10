@@ -215,8 +215,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
           'Content-Type': 'application/json-patch+json',
         },
         body: json.encode([{'op': 'replace', 'path': 'displayName', 'value': nameController.text}]));
-    print('response ' + response.body.toString());
-    print('response ' + response.statusCode.toString());
     if(response.statusCode==200){
       await UserBloc().getUserData();
       Navigator.pop(context);

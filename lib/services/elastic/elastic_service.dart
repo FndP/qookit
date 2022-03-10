@@ -65,9 +65,6 @@ class ElasticService {
          body: jsonEncode(details)
     );
       responseJson = _response(recipeResponse);
-    // print('Response status: ${recipeResponse.statusCode}');
-    // print('Response body: ${recipeResponse.body}');
-
    return UnmatchUserReportRequestModel.fromJson(responseJson);
   }
 

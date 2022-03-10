@@ -32,11 +32,9 @@ class UserBloc{
       await hiveService.userBox.put(UserService.userEmail, userDataModel.personal.email);
       await hiveService.userBox.put(UserService.userId, userDataModel.id);
 
-
       print('save data '+ hiveService.userBox.put(UserService.fullName, userDataModel.userName).toString());
 
       dataSink.add(Response.completed(userDataModel));
-
     } catch (e) {
       dataSink.add(Response.error(e.toString()));
     }

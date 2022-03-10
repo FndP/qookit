@@ -1,0 +1,155 @@
+{
+  "project_info": {
+    "project_number": "58811368561",
+    "firebase_url": "https://myfoodapp-267623.firebaseio.com",
+    "project_id": "myfoodapp-267623",
+    "storage_bucket": "myfoodapp-267623.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58811368561:android:ce1511037b2237518647d0",
+        "android_client_info": {
+          "package_name": "ai.qookit.flutter_tflite_example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58811368561-jjsu2j6j0ee80hkablcm04agieea2iss.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ai.qookit.flutter_tflite_example",
+            "certificate_hash": "53ba045987ef843f2b78146818b1d7d50fdec224"
+          }
+        },
+        {
+          "client_id": "58811368561-mffkr7r53e5n50hpt33f1d8hsqlcfvle.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCil6W1Ws6RfJjwej7zKialRUlva8LXXUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58811368561-mffkr7r53e5n50hpt33f1d8hsqlcfvle.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "58811368561-gorogfienv83d0llgbg2faqhbqavf6ks.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.qookit"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58811368561:android:9a06fd20c458b89e8647d0",
+        "android_client_info": {
+          "package_name": "com.qookit.mobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58811368561-7kblgdvemd98pucf9hlg9fhfn4qiq3hm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qookit.mobileapp",
+            "certificate_hash": "fa83f7ef323bc735314fda989378864d47a91165"
+          }
+        },
+        {
+          "client_id": "58811368561-d0dmn3o6nlvts2l56ktohhkqd3vgba68.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qookit.mobileapp",
+            "certificate_hash": "3d80912499f2046a4b76f88ce6f3f95b58187a65"
+          }
+        },
+        {
+          "client_id": "58811368561-gdpflq8683jevqdfjrk0pige5me1j4rb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qookit.mobileapp",
+            "certificate_hash": "11fec67c3068b87a04942c1c82f9f128ebbb6b77"
+          }
+        },
+        {
+          "client_id": "58811368561-l8oq8f6umj8hegs96mkdt7orucce8ul7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qookit.mobileapp",
+            "certificate_hash": "bde2bcb506d819f2c5a519a406fb34e87b34eac3"
+          }
+        },
+        {
+          "client_id": "58811368561-nmgj08va0p5jf73stjm2b6u0r1p5fv8l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qookit.mobileapp",
+            "certificate_hash": "adaba1c00a5087e834700b75f879362303388231"
+          }
+        },
+        {
+          "client_id": "58811368561-s4qcml5psa6m8trco5racomgalc5693u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qookit.mobileapp",
+            "certificate_hash": "3d3ed318e526b2dc62c105f8b7b35dc84fb7a9cd"
+          }
+        },
+        {
+          "client_id": "58811368561-v5hq77lemgd0sri9boogkd9lin77pafq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qookit.mobileapp",
+            "certificate_hash": "53ba045987ef843f2b78146818b1d7d50fdec224"
+          }
+        },
+        {
+          "client_id": "58811368561-vmmt7lrtavbgnl30kfqaan8sghe3cq0k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qookit.mobileapp",
+            "certificate_hash": "c72e00d7b338c881fa863eb4847017f06e8d8231"
+          }
+        },
+        {
+          "client_id": "58811368561-mffkr7r53e5n50hpt33f1d8hsqlcfvle.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCil6W1Ws6RfJjwej7zKialRUlva8LXXUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58811368561-mffkr7r53e5n50hpt33f1d8hsqlcfvle.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "58811368561-gorogfienv83d0llgbg2faqhbqavf6ks.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.qookit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
