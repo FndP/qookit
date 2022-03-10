@@ -1,2 +1,2 @@
-ninja: Entering directory `C:\Users\ADMIN\Desktop\qookit\android\app\.cxx\cmake\release\x86'
+ninja: Entering directory `D:\qookitToParth\qookit\android\app\.cxx\cmake\release\x86'
 ninja: no work to do.

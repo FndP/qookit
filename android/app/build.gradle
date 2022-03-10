@@ -74,6 +74,13 @@ android {
             shrinkResources false
             minifyEnabled false
         }
+        debug {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.debug
+            shrinkResources false
+            minifyEnabled false
+        }
     }
 
     externalNativeBuild {
@@ -95,6 +102,7 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //implementation 'com.facebook.android:facebook-android-sdk:[8,9)'
     implementation 'com.facebook.android:facebook-android-sdk:[8,9)'
     implementation 'com.google.guava:guava:27.0.1-android'
 }

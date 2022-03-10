@@ -24,15 +24,19 @@ class UserBloc{
 
     try {
       UserDataModel userDataModel = await elasticService.getList(UsersService.endpoint);
-      ///store data in local db (hive)
+
+      ///store data in local database (hive)
       await hiveService.setupHive();
       await hiveService.userBox.put(UserService.fullName, userDataModel.userName);
       await hiveService.userBox.put(UserService.displayName, userDataModel.displayName);
       await hiveService.userBox.put(UserService.userEmail, userDataModel.personal.email);
       await hiveService.userBox.put(UserService.userId, userDataModel.id);
-      print("save data "+ hiveService.userBox.put(UserService.fullName, userDataModel.userName).toString());
+
+
+      print('save data '+ hiveService.userBox.put(UserService.fullName, userDataModel.userName).toString());
 
       dataSink.add(Response.completed(userDataModel));
+
     } catch (e) {
       dataSink.add(Response.error(e.toString()));
     }

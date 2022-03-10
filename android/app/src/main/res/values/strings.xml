@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Qookit</string>
-    <string name="facebook_app_id">4890550441063804</string>
-    <string name="fb_login_protocol_scheme">fb4890550441063804</string>
-    <string name="facebook_client_token">baf2acafaa412f3875bae80231356174</string>
+    <string name="facebook_app_id">1383712112090374</string>
+    <string name="fb_login_protocol_scheme">fb1383712112090374</string>
+    <string name="facebook_client_token">45190f6dfe23420b583ed7e41d2398ed</string>
 </resources>

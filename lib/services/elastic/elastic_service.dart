@@ -13,7 +13,7 @@ import 'package:qookit/utils/custom_exception.dart';
 
 @injectable
 class ElasticService {
-  String domain = 'https://qookit.ddns.net';
+  String domain = 'qookit.ddns.net';
 
   // List of DB endpoints
   String get recipesUrl {
@@ -36,8 +36,9 @@ class ElasticService {
   // GENERIC REQUESTS **************************************************************************
   // GET ALL ITEMS
   Future<UserDataModel> getList(String endpoint) async {
+    ///API for Getting user data
     var responseJson;
-    var uri = Uri.parse(elasticService.domain+endpoint);
+    var uri = Uri.https(elasticService.domain, endpoint);
     var token = await authService.token;
 
     var recipeResponse = await http.get(uri,
@@ -50,13 +51,10 @@ class ElasticService {
     return UserDataModel.fromJson(responseJson);
   }
 
-  // POST AN ITEM
+ Future<UnmatchUserReportRequestModel> postItem(String endpoint, Map<String, dynamic> details) async {
 
-  Future<UnmatchUserReportRequestModel> postItem(
-      String endpoint, Map<String, dynamic> details) async {
     var responseJson;
-
-    var uri = Uri.https(domain, endpoint);
+    var uri = Uri.https(elasticService.domain, endpoint);
     var token = await authService.token;
 
     var recipeResponse = await http.post(uri,
@@ -64,12 +62,16 @@ class ElasticService {
           HttpHeaders.authorizationHeader: 'Bearer $token',
           HttpHeaders.contentTypeHeader: 'application/json',
         },
-        body: jsonEncode(details));
-    responseJson = _response(recipeResponse);
-    print('Response status: ${recipeResponse.statusCode}');
-    print('Response body: ${recipeResponse.body}');
+         body: jsonEncode(details)
+    );
+      responseJson = _response(recipeResponse);
+    // print('Response status: ${recipeResponse.statusCode}');
+    // print('Response body: ${recipeResponse.body}');
+
+   return UnmatchUserReportRequestModel.fromJson(responseJson);
   }
 
+  ///Status code for api responses
   dynamic _response(http.Response response) {
     print(response.statusCode);
     switch (response.statusCode) {

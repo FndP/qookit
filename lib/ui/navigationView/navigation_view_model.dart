@@ -57,6 +57,7 @@ class NavigationViewModel extends BaseViewModel {
     if (index == selectedIndex) {
       // Don't update tab if it matches the current tab
       print('Same tab selected');
+
     } else {
       selectedIndex = index;
       screenId = routeMap[selectedIndex];

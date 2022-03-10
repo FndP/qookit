@@ -6,7 +6,7 @@ import 'package:qookit/services/services.dart';
 @singleton
 class UserService {
 
-  // List of user KEYS
+  /// List of user KEYS
   static const String fullName = 'fullName'; // String
   static const String displayName = 'displayName'; // String
   static const String bio = 'bio'; // String

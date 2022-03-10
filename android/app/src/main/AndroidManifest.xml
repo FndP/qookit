@@ -14,6 +14,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="Qookit"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name="com.amazon.identity.auth.device.workflow.WorkflowActivity"

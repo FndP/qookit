@@ -1,16 +1,16 @@
 import 'dart:convert';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_lwa/lwa.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'package:location/location.dart';
 import 'package:qookit/app/app_router.gr.dart';
 import 'package:qookit/bloc/create_user_bloc.dart';
 import 'package:qookit/services/getIt.dart';
 import 'package:http/http.dart' as http;
 import 'package:qookit/services/utilities/string_service.dart';
+import 'package:qookit/ui/signInSignUp/loginView/login_view_model.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_lwa_platform_interface/flutter_lwa_platform_interface.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -56,6 +56,7 @@ class AuthService extends ChangeNotifier {
         .get<NavigationService>()
         .navigateToFirstScreen(route: SplashScreenView.id, context: context);*/
     FacebookLogin().logOut();
+    LoginWithAmazon().signOut();
     ExtendedNavigator.named('topNav').pushAndRemoveUntil(Routes.loginView, (route) => false);
     notifyListeners();
   }
@@ -83,45 +84,16 @@ class AuthService extends ChangeNotifier {
     // Trigger the authentication flow
     final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
     print('googleUser ' + googleUser.toString());
-    final GoogleSignInAuthentication googleAuth =
-        await googleUser.authentication;
+    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
-    // Create a new credential
     final GoogleAuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-
     try {
       // Once signed in, return the UserCredential
       var userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
       await updateUserDataToBackend(userCredential);
-      /*await CreateUserBloc().postUserData({
-          'userName': value.user.displayName,
-          'photoUrl': value.user.photoURL,
-          'backgroundUrl': 'String',
-          'displayName': value.user.displayName,
-          'personal': {
-            'firstName': 'String',
-            'lastName': 'String',
-            'fullName': 'String',
-            'email': value.user.email,
-            'aboutMe': 'String',
-            'homeUrl': 'String',
-            'location': {
-              'city': 'String',
-              'state': 'String',
-              'country': 'String',
-              'zip': 'String',
-              'gps': "25.22, 25.55",
-              'ip_addr': 'String'}
-          },
-          'preferences': {
-            'units': 'Imperial',
-            'recipe': ['String'],
-            'diet': ['String']
-          }
-        });*/
       return 'Success';
     } catch (e) {
       print(e.toString());
@@ -129,64 +101,56 @@ class AuthService extends ChangeNotifier {
     }
   }
 
-  //  signInWithFacebook() async {
-  //     // Trigger the sign-in flow
-  //     // final loginResult = await FacebookAuth.instance.login(permissions: ['public_profile', 'email']).then((value){
-  //     //   final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(value.accessToken.token);
-  //     //
-  //     //   // Once signed in, return the UserCredential
-  //     //   FirebaseAuth.instance.signInWithCredential(facebookAuthCredential).then((value){
-  //     //     if(FirebaseAuth.instance.currentUser!=null){
-  //     //       print('login success');
-  //     //     }else{
-  //     //       print(value.toString());
-  //     //     }
-  //     //   });
-  //     // });
-  //
-  //     // Create a credential from the access token
-  //
-  //
-  //
-  //   final result = await FacebookAuth.instance.login(permissions: [/*'public_profile',*/ 'email']);
-  //   print(result);
-  //   final userData = await FacebookAuth.instance.getUserData();
-  //   print(userData);
-  //   // Create a credential from the access token
-  //   final FacebookAuthCredential facebookAuthCredential = FacebookAuthProvider.credential('${result.accessToken.token}');
-  //
-  //   try {
-  //     // Once signed in, return the UserCredential
-  //     await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential).then((value) => updateUserDataToBackend(value));
-  //
-  //     return 'Success';
-  //   } catch (e) {
-  //     print(e.toString());
-  //     return e.toString();
-  //   }
-  // }
-
   Future<String> initiateFacebookLogin() async {
     var facebookLogin = FacebookLogin();
-    var facebookLoginResult = await facebookLogin.logIn(['public_profile', 'email']);
+    final facebookLoginResult = await facebookLogin.logIn(['public_profile', 'email']);
 
     switch (facebookLoginResult.status) {
       case FacebookLoginStatus.error:
         print(facebookLoginResult.errorMessage);
-        return 'Faild';
+        return 'Failed';
         break;
       case FacebookLoginStatus.cancelledByUser:
         print('Something went wrong');
-        return 'Faild';
+        return 'Failed';
         break;
       case FacebookLoginStatus.loggedIn:
 
         var graphResponse = await http.get(Uri.parse('https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email,picture.width(400)&access_token=${facebookLoginResult.accessToken.token}'));
-
         var profile = json.decode(graphResponse.body);
-        print(profile.toString());
+
+        print('FB ' + profile.toString());
+        final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(facebookLoginResult.accessToken.token);
+        await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+
+          await CreateUserBloc().postUserData({
+          'userName': profile['name'].toString(),
+          'photoUrl': profile['picture']['data']['url'].toString(),
+          'backgroundUrl': 'String',
+          'displayName': profile['name'].toString(),
+          'personal': {
+            'firstName': 'String',
+            'lastName': 'String',
+            'fullName': 'String',
+            'email': profile['email'].toString(),
+            'aboutMe': 'String',
+            'homeUrl': 'String',
+            'location': {
+              'city': 'String',
+              'state': 'String',
+              'country': 'String',
+              'zip': 'String',
+              'gps': '30.22, 30.55',
+              'ip_addr': 'String'}
+          },
+          'preferences': {
+            'units': 'Imperial',
+            'recipe': ['String'],
+            'diet': ['String']
+          }
+        });
+
         return 'Success';
-        // onLoginStatusChanged(true, profileData: profile);
         break;
     }
   }
@@ -264,7 +228,7 @@ class AuthService extends ChangeNotifier {
 
   Future<void> updateUserDataToBackend(UserCredential value, {String name = ''})  async {
     print(value);
-   await Location().getLocation().then((location) => CreateUserBloc().postUserData({
+   await CreateUserBloc().postUserData({
      'userName': name.isNotEmpty? name : value.user.displayName,
      'photoUrl': value.user.photoURL,
      'backgroundUrl': 'String',
@@ -281,7 +245,7 @@ class AuthService extends ChangeNotifier {
          'state': 'String',
          'country': 'String',
          'zip': 'String',
-         'gps': location.latitude.toString()+','+location.longitude.toString(),
+         'gps': '30.22, 30.55',
          'ip_addr': 'String'}
      },
      'preferences': {
@@ -289,6 +253,6 @@ class AuthService extends ChangeNotifier {
        'recipe': ['String'],
        'diet': ['String']
      }
-   }));
+   });
   }
 }

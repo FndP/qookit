@@ -30,13 +30,13 @@ class CreateUserBloc {
     try {
       UnmatchUserReportRequestModel unmatchUserReportRequest = await elasticService.postItem(UsersService.endpoint, details);
 
-      ///store data in local db (hive)
-
+      ///store data in local database (hive)
+      await hiveService.setupHive();
       await hiveService.userBox.put(UserService.fullName, unmatchUserReportRequest.userName);
       await hiveService.userBox.put(UserService.displayName, unmatchUserReportRequest.displayName);
       await hiveService.userBox.put(UserService.userEmail, unmatchUserReportRequest.personal.email);
       await hiveService.userBox.put(UserService.profileImage, unmatchUserReportRequest.photoUrl);
-      //await hiveService.userBox.put(UserService.userId, unmatchUserReportRequest);
+      
 
       dataSink.add(Response.completed(unmatchUserReportRequest));
     } catch (e) {
@@ -44,7 +44,6 @@ class CreateUserBloc {
     }
     return null;
   }
-
   dispose() {
     postCreateuserBlocController.close();
   }

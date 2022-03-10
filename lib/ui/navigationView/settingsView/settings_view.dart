@@ -52,9 +52,7 @@ class _SettingsViewState extends State<SettingsView> {
                         subtitle: InkWell(
                             onTap: (){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>UpdateProfile())).then((value) {
-                                setState(() {
-
-                                });
+                                setState(() {});
                               });
                             },
                             child: Text('EDIT PROFILE')),

@@ -62,7 +62,7 @@ class NoAccountRow extends ViewModelWidget<LoginViewModel> {
             child: Column(
               children: <Widget>[
                 Text(
-                  "Sign Up",
+                  'Sign Up',
                   style: TextStyle(
                       color: Colors.transparent,
                       shadows: [Shadow(offset: Offset(0, -5))],
@@ -91,7 +91,7 @@ class ThirdPartyIcons extends ViewModelWidget<LoginViewModel> {
   ThirdParty amazon = ThirdParty(image: 'assets/images/amazone_icon.png', label: 'Amazon');
   ThirdParty facebook = ThirdParty(image: 'assets/images/facebook_icon.png', label: 'Facebook');
   ThirdParty google = ThirdParty(image: 'assets/images/google_icon.png', label: 'Google');
-  ThirdParty apple = ThirdParty(image: 'assets/images/apple_icon.png', label: 'Apple');
+  ThirdParty apple = ThirdParty(image: 'assets/images/apple_icon.png', label: 'App  le');
 
   @override
   Widget build(BuildContext context, model) {
@@ -122,16 +122,16 @@ class ThirdPartyIcons extends ViewModelWidget<LoginViewModel> {
         ),
         onTap: () {
           switch (party.label) {
-            case "Amazon":
+            case 'Amazon':
               model.SignInWithAmazon(context);
               break;
-            case "Facebook":
+            case 'Facebook':
               model.loginWithFacebook(context);
               break;
-            case "Google":
+            case 'Google':
               model.loginWithGoogle(context);
               break;
-            case "Apple":
+            case 'Apple':
               model.loginWithApple(context);
               break;
           }

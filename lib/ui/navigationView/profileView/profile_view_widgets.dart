@@ -45,46 +45,17 @@ class FlexibleProfileBar extends ViewModelWidget<ProfileViewModel> {
             ],
           ),
         );
-        /*if(constraints.heightConstraints().maxHeight > 100){
-          return Row(
-            children: [
-             CircleAvatar(
-               child: FlutterLogo(),
-               radius: 20,
-             ),
-              Column(
-                children: [
-                  Text('Big',
-                  style: TextStyle(
-                    color: Colors.black
-                  ),),
-                ],
-              )
-            ],
-          );
-        } else{
-          return Row(
-            children:[
-              Spacer(),
-              Text('Small',
-                style: TextStyle(
-                    color: Colors.black
-                ),),
-            ]
-          );
-        }*/
       },
     );
-    /*FlexibleSpaceBar(
-      title: Text(
-        'Title',
-        style: TextStyle(color: Colors.black),
-      ),
-    );*/
   }
 }
 
-class SettingsIcon extends StatelessWidget {
+class SettingsIcon extends StatefulWidget {
+  @override
+  State<SettingsIcon> createState() => _SettingsIconState();
+}
+
+class _SettingsIconState extends State<SettingsIcon> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -94,7 +65,11 @@ class SettingsIcon extends StatelessWidget {
       ),
       onTap: (){
         /*ExtendedNavigator.named('nestedNav').push(NavigationViewRoutes.settingsView);*/
-        Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(builder: (context) => SettingsView()));
+        Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(builder: (context) => SettingsView())).then((value){
+          setState(() {
+
+          });
+        });
         print('Click');
       },
     );

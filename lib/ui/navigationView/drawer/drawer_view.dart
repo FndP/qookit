@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:flutter_lwa/lwa.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:qookit/models/location.dart';
 import 'package:qookit/models/personal.dart';
@@ -23,8 +25,11 @@ class NavDrawer extends StatelessWidget {
               ListTile(
                 title: Text('Log out'),
                 onTap: () async {
+
                   authService.signOut(context);
                   await _googleSignIn.disconnect();
+                  await FacebookLogin().logOut();
+                  await LoginWithAmazon().signOut();
                   //await ExtendedNavigator.named('topNav').pushAndRemoveUntil(Routes.splashScreenView, (route) => false);
                 },
               ),

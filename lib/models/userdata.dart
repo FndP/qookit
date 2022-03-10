@@ -7,7 +7,7 @@ import 'dart:convert';
 UserDataModel userDataModelFromJson(String str) => UserDataModel.fromJson(json.decode(str));
 
 String userDataModelToJson(UserDataModel data) => json.encode(data.toJson());
-
+///Create model class for user
 class UserDataModel {
   UserDataModel({
     this.id,

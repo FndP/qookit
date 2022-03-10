@@ -1,7 +1,7 @@
                 Executable : C:\Users\ADMIN\AppData\Local\Android\sdk\cmake\3.10.2.4988404\bin\cmake.exe
 arguments : 
--HC:\Users\ADMIN\Desktop\qookit\android
--DCMAKE_FIND_ROOT_PATH=C:\Users\ADMIN\Desktop\qookit\android\app\.cxx\cmake\release\prefab\x86_64\prefab
+-HD:\qookitToParth\qookit\android
+-DCMAKE_FIND_ROOT_PATH=D:\qookitToParth\qookit\android\app\.cxx\cmake\release\prefab\x86_64\prefab
 -DCMAKE_BUILD_TYPE=Release
 -DCMAKE_TOOLCHAIN_FILE=C:\Users\ADMIN\AppData\Local\Android\sdk\ndk\21.1.6352462\build\cmake\android.toolchain.cmake
 -DANDROID_ABI=x86_64
@@ -10,11 +10,11 @@ arguments :
 -DCMAKE_ANDROID_ARCH_ABI=x86_64
 -DCMAKE_ANDROID_NDK=C:\Users\ADMIN\AppData\Local\Android\sdk\ndk\21.1.6352462
 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\Users\ADMIN\Desktop\qookit\build\app\intermediates\cmake\release\obj\x86_64
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=D:\qookitToParth\qookit\build\app\intermediates\cmake\release\obj\x86_64
 -DCMAKE_MAKE_PROGRAM=C:\Users\ADMIN\AppData\Local\Android\sdk\cmake\3.10.2.4988404\bin\ninja.exe
 -DCMAKE_SYSTEM_NAME=Android
 -DCMAKE_SYSTEM_VERSION=21
--BC:\Users\ADMIN\Desktop\qookit\android\app\.cxx\cmake\release\x86_64
+-BD:\qookitToParth\qookit\android\app\.cxx\cmake\release\x86_64
 -GNinja
 jvmArgs : 
 

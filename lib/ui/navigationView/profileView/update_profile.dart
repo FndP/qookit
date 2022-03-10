@@ -24,13 +24,12 @@ class UpdateProfile extends StatefulWidget {
 
 class _UpdateProfileState extends State<UpdateProfile> {
   static GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
-  File _image1;
+
   String urlimg1;
   String document_path1;
 
   TextEditingController nameController = TextEditingController(
-      text:
-          hiveService.userBox.get(UserService.displayName, defaultValue: 'Karen'));
+      text: hiveService.userBox.get(UserService.displayName, defaultValue: 'Karen'));
   TextEditingController emailController = TextEditingController(
       text: hiveService.userBox.get(UserService.userEmail, defaultValue: ' '));
 
@@ -107,43 +106,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
                               ],
                             ),
                             SizedBox(height: 30),
-                            /*IconButton(
-                                icon: ClipRRect(
-                                  borderRadius: BorderRadius.circular(100),
-                                  child: _image1 == null
-                                      ? Image.network(
-                                          urlimg1 == ""
-                                              ? "https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg"
-                                              : urlimg1,
-                                          width: 100,
-                                          height: 100,
-                                          fit: BoxFit.fill,
-                                        )
-                                      : Image.file(_image1,
-                                          width: 100,
-                                          height: 100,
-                                          fit: BoxFit.fill),
-                                ),
-                                onPressed: () async {
-                                  var imageFile1 =
-                                      await ImagePicker.platform.pickImage(
-                                    source: ImageSource.gallery,
-                                  );
-                                  setState(() {
-                                    print(document_path1);
-                                  });
-                                  document_path1 = imageFile1.path;
-                                  if (document_path1.indexOf('file://') == 0) {
-                                    document_path1 =
-                                        document_path1.split('file://')[1];
-                                    print(document_path1);
-                                  }
-                                  setState(() {
-                                    _image1 = imageFile1 as File;
-                                    print(document_path1);
-                                  });
-                                },
-                                iconSize: 100),*/
                             Column(
                               children: <Widget>[
                                 SizedBox(height: 10),
@@ -220,6 +182,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                     onPressed: () {
                                       if (_loginFormKey.currentState
                                           .validate()) {
+                                        ///Update profile method
                                         updateProfile(model);
                                       }
                                     },
@@ -239,12 +202,13 @@ class _UpdateProfileState extends State<UpdateProfile> {
   }
 
   Future<void> updateProfile(LoginViewModel model) async {
+
     var userId = hiveService.userBox.get(UserService.userId);
 
     var token = await authService.token;
 
     final response = await http.patch(
-        Uri.parse(elasticService.domain + '/v1/user/' + userId),
+        Uri.https(elasticService.domain , '/v1/user/' + userId),
         headers: {
           'Authorization': 'Bearer $token',
           'accept': 'application/json',

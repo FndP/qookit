@@ -7,7 +7,7 @@ import 'dart:convert';
 UnmatchUserReportRequestModel unmatchUserReportRequestModelFromJson(String str) => UnmatchUserReportRequestModel.fromJson(json.decode(str));
 
 String unmatchUserReportRequestModelToJson(UnmatchUserReportRequestModel data) => json.encode(data.toJson());
-
+///Create user model class
 class UnmatchUserReportRequestModel {
   UnmatchUserReportRequestModel({
     this.userName,

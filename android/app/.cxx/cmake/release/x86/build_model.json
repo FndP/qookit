@@ -5,9 +5,9 @@
     "environmentVariables": []
   },
   "cmake": {
-    "cmakeArtifactsBaseFolder": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\app\\.cxx\\cmake\\release\\x86",
-    "cmakeServerLogFile": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\app\\.cxx\\cmake\\release\\x86\\cmake_server_log.txt",
-    "cmakeWrappingBaseFolder": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\app\\.cxx\\cxx\\release\\x86",
+    "cmakeArtifactsBaseFolder": "D:\\qookitToParth\\qookit\\android\\app\\.cxx\\cmake\\release\\x86",
+    "cmakeServerLogFile": "D:\\qookitToParth\\qookit\\android\\app\\.cxx\\cmake\\release\\x86\\cmake_server_log.txt",
+    "cmakeWrappingBaseFolder": "D:\\qookitToParth\\qookit\\android\\app\\.cxx\\cxx\\release\\x86",
     "effectiveConfiguration": {
       "name": "traditional-android-studio-cmake-environment",
       "description": "Composite reified CMakeSettings configuration",
@@ -15,13 +15,13 @@
       "inheritEnvironments": [
         "ndk"
       ],
-      "buildRoot": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\app\\.cxx\\cmake\\release\\x86",
+      "buildRoot": "D:\\qookitToParth\\qookit\\android\\app\\.cxx\\cmake\\release\\x86",
       "cmakeToolchain": "C:\\Users\\ADMIN\\AppData\\Local\\Android\\sdk\\ndk\\21.1.6352462\\build\\cmake\\android.toolchain.cmake",
       "cmakeExecutable": "C:\\Users\\ADMIN\\AppData\\Local\\Android\\sdk\\cmake\\3.10.2.4988404\\bin\\cmake.exe",
       "variables": [
         {
           "name": "CMAKE_FIND_ROOT_PATH",
-          "value": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\app\\.cxx\\cmake\\release\\prefab\\x86\\prefab"
+          "value": "D:\\qookitToParth\\qookit\\android\\app\\.cxx\\cmake\\release\\prefab\\x86\\prefab"
         },
         {
           "name": "CMAKE_BUILD_TYPE",
@@ -57,7 +57,7 @@
         },
         {
           "name": "CMAKE_LIBRARY_OUTPUT_DIRECTORY",
-          "value": "C:\\Users\\ADMIN\\Desktop\\qookit\\build\\app\\intermediates\\cmake\\release\\obj\\x86"
+          "value": "D:\\qookitToParth\\qookit\\build\\app\\intermediates\\cmake\\release\\obj\\x86"
         },
         {
           "name": "CMAKE_MAKE_PROGRAM",
@@ -74,14 +74,14 @@
       ]
     }
   },
-  "cxxBuildFolder": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\app\\.cxx\\cmake\\release\\x86",
+  "cxxBuildFolder": "D:\\qookitToParth\\qookit\\android\\app\\.cxx\\cmake\\release\\x86",
   "info": {
     "abi": "X86",
     "bitness": 32,
     "deprecated": false,
     "default": true
   },
-  "originalCxxBuildFolder": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\app\\.cxx\\cmake\\release\\x86",
+  "originalCxxBuildFolder": "D:\\qookitToParth\\qookit\\android\\app\\.cxx\\cmake\\release\\x86",
   "variant": {
     "buildSystemArgumentList": [],
     "buildTargetSet": [],
@@ -98,12 +98,12 @@
         "ninjaExe": "C:\\Users\\ADMIN\\AppData\\Local\\Android\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe"
       },
       "cmakeToolchainFile": "C:\\Users\\ADMIN\\AppData\\Local\\Android\\sdk\\ndk\\21.1.6352462\\build\\cmake\\android.toolchain.cmake",
-      "cxxFolder": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\app\\.cxx",
+      "cxxFolder": "D:\\qookitToParth\\qookit\\android\\app\\.cxx",
       "gradleModulePathName": ":app",
-      "intermediatesFolder": "C:\\Users\\ADMIN\\Desktop\\qookit\\build\\app\\intermediates",
-      "makeFile": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\CMakeLists.txt",
-      "moduleBuildFile": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\app\\build.gradle",
-      "moduleRootFolder": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\app",
+      "intermediatesFolder": "D:\\qookitToParth\\qookit\\build\\app\\intermediates",
+      "makeFile": "D:\\qookitToParth\\qookit\\android\\CMakeLists.txt",
+      "moduleBuildFile": "D:\\qookitToParth\\qookit\\android\\app\\build.gradle",
+      "moduleRootFolder": "D:\\qookitToParth\\qookit\\android\\app",
       "ndkDefaultAbiList": [
         "ARMEABI_V7A",
         "ARM64_V8A",
@@ -167,12 +167,12 @@
       "ndkDefaultStl": "LIBCXX_STATIC",
       "ndkVersion": "21.1.6352462",
       "project": {
-        "compilerSettingsCacheFolder": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\.cxx",
-        "cxxFolder": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\.cxx",
+        "compilerSettingsCacheFolder": "D:\\qookitToParth\\qookit\\android\\.cxx",
+        "cxxFolder": "D:\\qookitToParth\\qookit\\android\\.cxx",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
         "isNativeCompilerSettingsCacheEnabled": false,
-        "rootBuildGradleFolder": "C:\\Users\\ADMIN\\Desktop\\qookit\\android",
+        "rootBuildGradleFolder": "D:\\qookitToParth\\qookit\\android",
         "sdkFolder": "C:\\Users\\ADMIN\\AppData\\Local\\Android\\sdk",
         "isPrefabEnabled": false
       },
@@ -189,7 +189,7 @@
         "SYSTEM": {}
       }
     },
-    "objFolder": "C:\\Users\\ADMIN\\Desktop\\qookit\\build\\app\\intermediates\\cmake\\release\\obj",
+    "objFolder": "D:\\qookitToParth\\qookit\\build\\app\\intermediates\\cmake\\release\\obj",
     "variantName": "release",
     "validAbiList": [
       "ARMEABI_V7A",
@@ -197,8 +197,8 @@
       "X86",
       "X86_64"
     ],
-    "prefabDirectory": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\app\\.cxx\\cmake\\release\\prefab",
+    "prefabDirectory": "D:\\qookitToParth\\qookit\\android\\app\\.cxx\\cmake\\release\\prefab",
     "prefabPackageDirectoryList": []
   },
-  "prefabFolder": "C:\\Users\\ADMIN\\Desktop\\qookit\\android\\app\\.cxx\\cmake\\release\\prefab\\x86"
+  "prefabFolder": "D:\\qookitToParth\\qookit\\android\\app\\.cxx\\cmake\\release\\prefab\\x86"
 }
