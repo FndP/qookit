@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_lwa/lwa.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
@@ -11,6 +13,7 @@ import 'package:qookit/services/getIt.dart';
 import 'package:http/http.dart' as http;
 import 'package:qookit/services/utilities/string_service.dart';
 import 'package:qookit/ui/signInSignUp/loginView/login_view_model.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_lwa_platform_interface/flutter_lwa_platform_interface.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -80,6 +83,142 @@ class AuthService extends ChangeNotifier {
       return message;
     }
   }
+
+  Future<String> signInWithAmazon(BuildContext context) async {
+
+    LoginWithAmazon _loginWithAmazon = LoginWithAmazon(scopes: <Scope>[ProfileScope.profile(), ProfileScope.postalCode()]);
+
+    LwaUser _lwaUser = LwaUser.empty();
+
+    _loginWithAmazon.onLwaAuthorizeChanged.listen((LwaAuthorizeResult auth) {
+      // lwaAuth = auth;
+      ///todo hio need to up user data in amazon.
+    });
+
+    await _loginWithAmazon.signIn()/*signInSilently()*/;
+
+    try {
+      await _loginWithAmazon.signIn();
+      _lwaUser = await _loginWithAmazon.fetchUserProfile();
+      print(_lwaUser.userInfo);
+
+
+      await CreateUserBloc().postUserData({
+        'userName': _lwaUser.userName,
+        'photoUrl': 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
+        'backgroundUrl': 'String',
+        'displayName':_lwaUser.userName,
+        'personal': {
+          'firstName': 'String',
+          'lastName': 'String',
+          'fullName': 'String',
+          'email': _lwaUser.userEmail,
+          'aboutMe': 'String',
+          'homeUrl': 'String',
+          'location': {
+            'city': 'String',
+            'state': 'String',
+            'country': 'String',
+            'zip': 'String',
+            'gps': '30.22, 30.55',
+            'ip_addr': 'String'}
+        },
+        'preferences': {
+          'units': 'Imperial',
+          'recipe': ['String'],
+          'diet': ['String']
+        }
+      });
+
+      // return 'Success';
+
+    } catch (error) {
+      if (error is PlatformException) {
+        print(error.message);
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text('${error.message}'),
+        ));
+        return 'Failed';
+      } else {
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text(error.toString()),
+        ));
+        return 'Failed';
+      }
+    }
+  }
+
+  Future<String> signInWithApple(BuildContext context) async {
+    if (Platform.isAndroid) {
+      var redirectURL = '';
+      // var clientID = 'com.appideas.chatcity';
+      var clientID = 'com.qookit.mobileapp';
+
+      final appleIdCredential = await SignInWithApple.getAppleIDCredential(
+          scopes: [
+            AppleIDAuthorizationScopes.email,
+            AppleIDAuthorizationScopes.fullName
+          ],
+          webAuthenticationOptions: WebAuthenticationOptions(clientId: clientID, redirectUri: Uri.parse(redirectURL)));
+
+      final oAuthProvider = OAuthProvider('apple.com');
+      final credential = oAuthProvider.credential(
+        idToken: appleIdCredential.identityToken,
+        accessToken: appleIdCredential.authorizationCode,
+      );
+      print(credential);
+
+      ///add user data entry in firebase.
+      var userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+      ///add user data entry in backend.
+      await updateUserDataToBackend(userCredential);
+
+      ///todo call api and store data to backend and firebase.
+      return 'Success';
+
+    } else {
+
+      final credential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+        webAuthenticationOptions: WebAuthenticationOptions(
+            clientId: 'com.aboutyou.dart_packages.sign_in_with_apple.example',
+            redirectUri: Uri.parse('https://flutter-sign-in-with-apple-example.glitch.me/callbacks/sign_in_with_apple')),
+        nonce: 'example-nonce',
+        state: 'example-state',
+      );
+
+      final signInWithAppleEndpoint = Uri(
+        scheme: 'https',
+        host: 'flutter-sign-in-with-apple-example.glitch.me',
+        path: '/sign_in_with_apple',
+        queryParameters: <String, String>{
+          'code': credential.authorizationCode,
+          if (credential.givenName != null) 'firstName': credential.givenName,
+          if (credential.familyName != null) 'lastName': credential.familyName,
+          'useBundleId': Platform.isIOS || Platform.isMacOS ? 'true' : 'false',
+          if (credential.state != null) 'state': credential.state,
+        },
+      );
+
+      final session = await http.Client()
+          .post(signInWithAppleEndpoint)
+          .then((value) => AuthService().updateUserDataToBackend);
+      // print(session);
+
+
+
+      ///add user data entry in firebase.
+      // var userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+      ///add user data entry in backend.
+      // await updateUserDataToBackend(userCredential);
+
+      return 'Success';
+    }
+  }
+
   Future<String> signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
@@ -92,7 +231,9 @@ class AuthService extends ChangeNotifier {
     );
     try {
       // Once signed in, return the UserCredential
+      ///add user data entry in firebase.
       var userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+      ///add user data entry in backend.
       await updateUserDataToBackend(userCredential);
       return 'Success';
     } catch (e) {
@@ -163,7 +304,9 @@ class AuthService extends ChangeNotifier {
 
     String message;
     try {
+      ///add user data entry in firebase.
       var userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+      ///add user data entry in backend.
       await updateUserDataToBackend(userCredential, name: name);
 
       //await ExtendedNavigator.named('topNav').replace(Routes.recommendationPreferences);

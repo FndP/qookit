@@ -1,2 +1,7 @@
-ninja: Entering directory `D:\qookitToParth\qookit\android\app\.cxx\cmake\debug\armeabi-v7a'
-ninja: no work to do.
+ninja: Entering directory `/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/android/app/.cxx/cmake/debug/armeabi-v7a'
+[1/2] Building C object CMakeFiles/convertImage.dir/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/ios/Classes/converter.c.o
+FAILED: CMakeFiles/convertImage.dir/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/ios/Classes/converter.c.o 
+/Users/patelchirag/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/patelchirag/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/patelchirag/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -DconvertImage_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC -MD -MT CMakeFiles/convertImage.dir/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/ios/Classes/converter.c.o -MF CMakeFiles/convertImage.dir/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/ios/Classes/converter.c.o.d -o CMakeFiles/convertImage.dir/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/ios/Classes/converter.c.o   -c /Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/ios/Classes/converter.c
+clang: error: no such file or directory: '/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/ios/Classes/converter.c'
+clang: error: no input files
+ninja: build stopped: subcommand failed.

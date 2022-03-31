@@ -80,7 +80,7 @@ class _SettingsViewState extends State<SettingsView> {
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () {
 
-                  //authService.signOut(context);
+                  authService.signOut(context);
                 }),
             SizedBox(height: 20),
           ]),

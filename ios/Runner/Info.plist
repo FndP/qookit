@@ -1,9 +1,13 @@
-CFBundleURLTypes<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>APIKey</key>
+	<string>eyJhbGciOiJSU0EtU0hBMjU2IiwidmVyIjoiMSJ9.eyJ2ZXIiOiIzIiwiZW5kcG9pbnRzIjp7ImF1dGh6IjoiaHR0cHM6Ly93d3cuYW1hem9uLmNvbS9hcC9vYSIsInRva2VuRXhjaGFuZ2UiOiJodHRwczovL2FwaS5hbWF6b24uY29tL2F1dGgvbzIvdG9rZW4ifSwiY2xpZW50SWQiOiJhbXpuMS5hcHBsaWNhdGlvbi1vYTItY2xpZW50LjY3NmM5ZDhkZjNmMzQ2NTI5ZDk0MjUwZTM0ZTlkYjVhIiwiYXBwRmFtaWx5SWQiOiJhbXpuMS5hcHBsaWNhdGlvbi5jOTE0YWU5ZWQ2YjQ0NjU1YTE0MmJkOTBhNDc0OGI3MSIsImJ1bmRsZVNlZWRJZCI6ImFwcC5xb29raXQiLCJidW5kbGVJZCI6ImFwcC5xb29raXQiLCJpc3MiOiJBbWF6b24iLCJ0eXBlIjoiQVBJS2V5IiwiYXBwVmFyaWFudElkIjoiYW16bjEuYXBwbGljYXRpb24tY2xpZW50LmVlZjhlNmYxMGI3OTRlZmQ5OWQ2YTNlODRjMzM3MDA2IiwidHJ1c3RQb29sIjpudWxsLCJhcHBJZCI6ImFtem4xLmFwcGxpY2F0aW9uLWNsaWVudC5lZWY4ZTZmMTBiNzk0ZWZkOTlkNmEzZTg0YzMzNzAwNiIsImlkIjoiZTc5NGUzMWQtNDViYS00ZmMyLWJkYTMtMDUwYzI5NzY1NzM0IiwiaWF0IjoiMTY0ODIwNDc2OTk1OSJ9.j5ms4k6fRzPgZChbrOGtSJQVT7X2Fk9E885U9JT0RsJ3+xx6lBqo/mvpGDBwDRFUN0mxcuxZ2mjYUr2kGt67UVcnC0dg/WpBGxJ21IYhhhQ67dGZykirUxBv/hvKi931JrB1Vmxbuvd/Ym06Af2yU1yh5VTqHD3RY9XQBa4zMTSmJM+Sd1319IdOPl56pHxPygkiMJcxrzV68ltu8BAKV2bOgSJ5u3Iuqke8Faq1fEbE8YeX96W19cdri3FRax4j4knyyVJcu5kI7+lrQKbngJ1bYNaTuHiTK/lfOBoU/kUgARuZvuoymuEyDANUISmWUQf9T2K8DSS7D/jO3V16cA==</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Qookit</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -18,8 +22,45 @@ CFBundleURLTypes<?xml version="1.0" encoding="UTF-8"?>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>app.qookit</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>amzn-app.qookit</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>app.qookit</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.58811368561-gorogfienv83d0llgbg2faqhbqavf6ks</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1383712112090374</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FacebookAppID</key>
+	<string>1383712112090374</string>
+	<key>FacebookClientToken</key>
+	<string>45190f6dfe23420b583ed7e41d2398ed</string>
+	<key>FacebookDisplayName</key>
+	<string>Qookit</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
@@ -35,8 +76,6 @@ CFBundleURLTypes<?xml version="1.0" encoding="UTF-8"?>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -47,28 +86,5 @@ CFBundleURLTypes<?xml version="1.0" encoding="UTF-8"?>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>APIKey</key>
-    	<string>eyJhbGciOiJSU0EtU0hBMjU2IiwidmVyIjoiMSJ9.eyJ2ZXIiOiIzIiwiZW5kcG9pbnRzIjp7ImF1dGh6IjoiaHR0cHM6Ly93d3cuYW1hem9uLmNvbS9hcC9vYSIsInRva2VuRXhjaGFuZ2UiOiJodHRwczovL2FwaS5hbWF6b24uY29tL2F1dGgvbzIvdG9rZW4ifSwiY2xpZW50SWQiOiJhbXpuMS5hcHBsaWNhdGlvbi1vYTItY2xpZW50LjI2NWNlODAyOWE2OTRlMTRiOTBmZTM4NDBmZmM2MmNjIiwiYXBwRmFtaWx5SWQiOiJhbXpuMS5hcHBsaWNhdGlvbi5jOTE0YWU5ZWQ2YjQ0NjU1YTE0MmJkOTBhNDc0OGI3MSIsImJ1bmRsZVNlZWRJZCI6ImNvbS5xb29raXQucW9va2l0IiwiYnVuZGxlSWQiOiJjb20ucW9va2l0LnFvb2tpdCIsImlzcyI6IkFtYXpvbiIsInR5cGUiOiJBUElLZXkiLCJhcHBWYXJpYW50SWQiOiJhbXpuMS5hcHBsaWNhdGlvbi1jbGllbnQuYzk1ODQ3MmE2MjMwNGU3ZGI2OTQyMmEyNGMyM2IxMzgiLCJ0cnVzdFBvb2wiOm51bGwsImFwcElkIjoiYW16bjEuYXBwbGljYXRpb24tY2xpZW50LmM5NTg0NzJhNjIzMDRlN2RiNjk0MjJhMjRjMjNiMTM4IiwiaWQiOiI0YWU4YWI3Zi0zYzNiLTQ2NzctYmMwMC0zZmI1YzY2NGI3ZDIiLCJpYXQiOiIxNjQ2ODg2NDU4NDkzIn0=.HsDtJSs/9S9V77/ZjHjEnya1vwXX9ngk6OTqJXPNY2qcERXIORKWbX1HhPgDd1JdS7Bvol8qlmG2rrzvUXKqCCU4vDl7DEvbcD6MUHxjNPogj8sIt5AM4cTF75+oRfG6ZkjOyzmOItRjifCRzN4SK/UWLej7xAQ3OGZPxcI41mp69fgcdXfjtpNwEtoDimsgfp+Yni7li4pogCdjr8R10btbCQadTBUHYtjqY0FOv/bjC+n4QgoK5a+pPhtsqAxCoYTzb0G0QytRDZLD8RO0w7ANSSBtSLO7Q6zyrqnrJrQpDk8AWgi8XHVMfQDcsO3m/gbYiT1/+0Ey9pyJiyrkUg==</string>
-
-    <key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>com.qookit.qookit</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>amzn-com.qookit.qookit</string>
-				<string>fb1383712112090374</string>
-				<string>com.googleusercontent.apps.861823949799-vc35cprkp249096uujjn0vvnmcvjppkn</string>
-			</array>
-		</dict>
-	</array>
-	<key>FacebookAppID</key>
-    <string>1383712112090374</string>
-    <key>FacebookClientToken</key>
-    <string>45190f6dfe23420b583ed7e41d2398ed</string>
-    <key>FacebookDisplayName</key>
-    <string>Qookit</string>
-
 </dict>
 </plist>

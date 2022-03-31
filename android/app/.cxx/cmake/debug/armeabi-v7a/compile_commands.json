@@ -1,7 +1,7 @@
 [
 {
-  "directory": "D:/qookitToParth/qookit/android/app/.cxx/cmake/debug/armeabi-v7a",
-  "command": "C:\\Users\\ADMIN\\AppData\\Local\\Android\\Sdk\\ndk\\21.1.6352462\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe --target=armv7-none-linux-androideabi21 --gcc-toolchain=C:/Users/ADMIN/AppData/Local/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/ADMIN/AppData/Local/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DconvertImage_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles\\convertImage.dir\\D_\\qookitToParth\\qookit\\ios\\Classes\\converter.c.o   -c D:\\qookitToParth\\qookit\\ios\\Classes\\converter.c",
-  "file": "D:\\qookitToParth\\qookit\\ios\\Classes\\converter.c"
+  "directory": "/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/android/app/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/patelchirag/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/patelchirag/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/patelchirag/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -DconvertImage_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/convertImage.dir/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/ios/Classes/converter.c.o   -c /Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/ios/Classes/converter.c",
+  "file": "/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/ios/Classes/converter.c"
 }
 ]

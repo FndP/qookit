@@ -91,7 +91,7 @@ class ThirdPartyIcons extends ViewModelWidget<LoginViewModel> {
   ThirdParty amazon = ThirdParty(image: 'assets/images/amazone_icon.png', label: 'Amazon');
   ThirdParty facebook = ThirdParty(image: 'assets/images/facebook_icon.png', label: 'Facebook');
   ThirdParty google = ThirdParty(image: 'assets/images/google_icon.png', label: 'Google');
-  ThirdParty apple = ThirdParty(image: 'assets/images/apple_icon.png', label: 'App  le');
+  ThirdParty apple = ThirdParty(image: 'assets/images/apple_icon.png', label: 'Apple');
 
   @override
   Widget build(BuildContext context, model) {
@@ -123,7 +123,7 @@ class ThirdPartyIcons extends ViewModelWidget<LoginViewModel> {
         onTap: () {
           switch (party.label) {
             case 'Amazon':
-              model.SignInWithAmazon(context);
+              model.loginWithAmazon(context);
               break;
             case 'Facebook':
               model.loginWithFacebook(context);

@@ -39,11 +39,16 @@ class ElasticService {
     ///API for Getting user data
     var responseJson;
     var uri = Uri.https(elasticService.domain, endpoint);
-    var token = await authService.token;
+    var token;
+    if(authService!=null && authService.token!=null){
+      token = await authService.token;
+    }
 
     var recipeResponse = await http.get(uri,
-      headers: {
+      headers: token != null ? {
         HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.contentTypeHeader: 'application/json',
+      } : {
         HttpHeaders.contentTypeHeader: 'application/json',
       },
     );
@@ -55,11 +60,16 @@ class ElasticService {
 
     var responseJson;
     var uri = Uri.https(elasticService.domain, endpoint);
-    var token = await authService.token;
+    var token;
+    if(authService!=null && authService.token!=null){
+      token = await authService.token;
+    }
 
     var recipeResponse = await http.post(uri,
-        headers: {
+        headers: token!=null ? {
           HttpHeaders.authorizationHeader: 'Bearer $token',
+          HttpHeaders.contentTypeHeader: 'application/json',
+        }: {
           HttpHeaders.contentTypeHeader: 'application/json',
         },
          body: jsonEncode(details)

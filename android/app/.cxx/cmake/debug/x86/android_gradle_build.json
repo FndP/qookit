@@ -1,39 +1,39 @@
 {
   "stringTable": {
-    "0": "D:/qookitToParth/qookit/android/app/.cxx/cmake/debug/x86",
-    "1": "--target=i686-none-linux-android21 --gcc-toolchain=C:/Users/ADMIN/AppData/Local/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/ADMIN/AppData/Local/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DconvertImage_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -O0 -fno-limit-debug-info -fPIC"
+    "0": "/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/android/app/.cxx/cmake/debug/x86",
+    "1": "--target=i686-none-linux-android21 --gcc-toolchain=/Users/patelchirag/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/patelchirag/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -DconvertImage_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -O0 -fno-limit-debug-info -fPIC"
   },
   "buildFiles": [
-    "D:\\qookitToParth\\qookit\\android\\CMakeLists.txt",
-    "C:\\Users\\ADMIN\\AppData\\Local\\Android\\Sdk\\ndk\\21.1.6352462\\build\\cmake\\android.toolchain.cmake",
-    "C:\\Users\\ADMIN\\AppData\\Local\\Android\\Sdk\\ndk\\21.1.6352462\\build\\cmake\\platforms.cmake"
+    "/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/android/CMakeLists.txt",
+    "/Users/patelchirag/Library/Android/sdk/ndk/21.1.6352462/build/cmake/android.toolchain.cmake",
+    "/Users/patelchirag/Library/Android/sdk/ndk/21.1.6352462/build/cmake/platforms.cmake"
   ],
   "cleanCommands": [
-    "C:\\Users\\ADMIN\\AppData\\Local\\Android\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\qookitToParth\\qookit\\android\\app\\.cxx\\cmake\\debug\\x86\" clean"
+    "/Users/patelchirag/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/android/app/.cxx/cmake/debug/x86\" clean"
   ],
-  "buildTargetsCommand": "C:\\Users\\ADMIN\\AppData\\Local\\Android\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"D:\\qookitToParth\\qookit\\android\\app\\.cxx\\cmake\\debug\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "buildTargetsCommand": "/Users/patelchirag/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/android/app/.cxx/cmake/debug/x86\" {LIST_OF_TARGETS_TO_BUILD}",
   "libraries": {
     "convertImage-Debug-x86": {
-      "buildCommand": "C:\\Users\\ADMIN\\AppData\\Local\\Android\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\qookitToParth\\qookit\\android\\app\\.cxx\\cmake\\debug\\x86\" convertImage",
+      "buildCommand": "/Users/patelchirag/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/android/app/.cxx/cmake/debug/x86\" convertImage",
       "buildType": "debug",
-      "toolchain": "3170380495",
+      "toolchain": "1229201729",
       "abi": "x86",
       "artifactName": "convertImage",
       "files": [
         {
-          "src": "D:\\qookitToParth\\qookit\\ios\\Classes\\converter.c",
+          "src": "/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/ios/Classes/converter.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         }
       ],
       "headers": [],
-      "output": "D:\\qookitToParth\\qookit\\build\\app\\intermediates\\cmake\\debug\\obj\\x86\\libconvertImage.so",
+      "output": "/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/build/app/intermediates/cmake/debug/obj/x86/libconvertImage.so",
       "runtimeFiles": []
     }
   },
   "toolchains": {
-    "3170380495": {
-      "cCompilerExecutable": "C:\\Users\\ADMIN\\AppData\\Local\\Android\\Sdk\\ndk\\21.1.6352462\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe"
+    "1229201729": {
+      "cCompilerExecutable": "/Users/patelchirag/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang"
     }
   },
   "cFileExtensions": [

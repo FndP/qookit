@@ -1,2 +1,2 @@
-ninja: Entering directory `D:\qookitToParth\qookit\android\app\.cxx\cmake\debug\arm64-v8a'
-ninja: no work to do.
+ninja: Entering directory `/Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/android/app/.cxx/cmake/debug/arm64-v8a'
+[1/1] Linking C shared library /Users/patelchirag/Documents/flutter_projects/qookit_new/qookit/build/app/intermediates/cmake/debug/obj/arm64-v8a/libconvertImage.so
